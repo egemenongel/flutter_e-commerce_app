@@ -12,19 +12,26 @@ class AppThemeLight extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData(
-        colorScheme: _appColorScheme,
-      );
+      colorScheme: _appColorScheme,
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: ColorWheel.shojohiRed,
+        unselectedItemColor: Colors.black54,
+        showUnselectedLabels: true,
+        selectedIconTheme: IconThemeData(
+          color: ColorWheel.shojohiRed,
+        ),
+      ).copyWith());
   ColorScheme get _appColorScheme {
     return const ColorScheme(
       primary: ColorWheel.shojohiRed,
       onPrimary: ColorWheel.doctorWhite,
       secondary: ColorWheel.shojohiRed,
-      onSecondary: Colors.grey,
-      background: Colors.white,
-      onBackground: Colors.grey,
-      surface: Colors.white,
+      onSecondary: ColorWheel.doctorWhite,
+      background: ColorWheel.doctorWhite,
+      onBackground: ColorWheel.shojohiRed,
+      surface: ColorWheel.doctorWhite,
       error: Colors.red,
-      onError: Colors.white,
+      onError: ColorWheel.doctorWhite,
       onSurface: Colors.grey,
       brightness: Brightness.light,
     );

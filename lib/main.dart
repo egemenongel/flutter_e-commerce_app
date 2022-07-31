@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/extensions/theme/theme_notifier.dart';
-import 'package:ecommerce_app/features/home/view/home_view.dart';
+import 'package:ecommerce_app/features/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ecommerce App',
-      home: const HomeView(),
+      home: const BottomNavBar(),
       theme: context.watch<ThemeNotifier>().currentTheme,
     );
   }
