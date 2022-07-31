@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'Ecommerce App', home: HomeView());
+    return MaterialApp(
+      title: 'Ecommerce App',
+      home: const HomeView(),
+      theme: context.watch<ThemeNotifier>().currentTheme,
+    );
   }
 }
