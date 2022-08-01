@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
@@ -39,9 +41,9 @@ class CustomAppBarState extends State<CustomAppBar> {
       iconTheme: IconThemeData(color: context.colors.primary),
       titleTextStyle:
           context.textTheme.headline5!.copyWith(color: context.colors.primary),
-      title: const Center(
+      title: Center(
         child: Text(
-          'Products',
+          'shop.title'.tr(),
         ),
       ),
       actions: [
@@ -56,11 +58,11 @@ class CustomAppBarState extends State<CustomAppBar> {
 
   Row _buildActions() {
     List<String> actionsList = [
-      'Popular',
-      'Newest',
-      'Reviews',
-      'Price: High to Low',
-      'Price: Low to High'
+      'shop.sort_types.popular'.tr().toTitleCase(),
+      'shop.sort_types.newest'.tr().toTitleCase(),
+      'shop.sort_types.reviews'.tr().toTitleCase(),
+      'shop.sort_types.price_low'.tr(),
+      'shop.sort_types.price_high'.tr()
     ];
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,

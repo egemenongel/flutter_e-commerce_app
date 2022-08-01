@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/features/bag/bag_view.dart';
 import 'package:ecommerce_app/features/favorites/favorites_view.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
@@ -35,16 +37,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
       bottomNavigationBar: BottomNavigationBar(
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_cart_outlined), label: 'Shop'),
+              icon: const Icon(Icons.home),
+              label: 'common.nav.home'.tr().toTitleCase(),
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag_outlined), label: 'Bag'),
+              icon: const Icon(Icons.shopping_cart_outlined),
+              label: 'common.nav.shop'.tr().toTitleCase(),
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border), label: 'Favorites'),
+              icon: const Icon(Icons.shopping_bag_outlined),
+              label: 'common.nav.bag'.tr().toTitleCase(),
+            ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline_outlined), label: 'Profile'),
+              icon: const Icon(Icons.favorite_border),
+              label: 'common.nav.favorites'.tr().toTitleCase(),
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.person_outline_outlined),
+              label: 'common.nav.profile'.tr().toTitleCase(),
+            ),
           ]),
     );
   }

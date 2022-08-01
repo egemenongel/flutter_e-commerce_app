@@ -1,0 +1,37 @@
+{
+    "common":{
+        "nav":{
+            "home":"ana sayfa",
+            "shop":"magaza",
+            "bag":"canta",
+            "favorites":"favoriler",
+            "profile":"profil"
+        }
+    },
+    "home":{
+        "title":"yeni koleksiyon",
+        "sale":"yaz indirimi",
+        "hoodies":"erkek hoodie",
+        "black":"siyah"
+    },
+    "shop":{
+        "title":"Urunler",
+        "sort":"Suna gore sirala",
+        "sort_types":{
+            "popular":"populer",
+            "newest":"en yeni",
+            "reviews":"kullanici incelemesi",
+            "price_low":"Fiyat: Yuksekten Dusuge",
+            "price_high":"Fiyat: Dusukten Yuksege"
+        }
+    },
+    "bag":{
+        "title":"canta"
+    },
+    "favorites":{
+        "title":"favoriler"
+    },
+    "profile":{
+        "profile":"profil"
+    }
+} 

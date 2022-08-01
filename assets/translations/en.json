@@ -1,0 +1,37 @@
+{   
+    "common":{
+        "nav":{
+            "home":"home",
+            "shop":"shop",
+            "bag":"bag",
+            "favorites":"favorites",
+            "profile":"profile"
+        }
+    },
+    "home":{
+        "title":"new collection",
+        "sale":"summer sale",
+        "hoodies":"Men's hoodies",
+        "black":"black"
+    },
+    "shop":{
+        "title":"products",
+        "sort":"sort by",
+        "sort_types":{
+            "popular":"popular",
+            "newest":"newest",
+            "reviews":"reviews",
+            "price_low":"Price: High to Low",
+            "price_high":"Price: Low to High"
+        }
+    },
+    "bag":{
+        "title":"bag"
+    },
+    "favorites":{
+        "title":"favorites"
+    },
+    "profile":{
+        "profile":"profile"
+    }
+} 

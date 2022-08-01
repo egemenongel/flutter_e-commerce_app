@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -49,7 +51,7 @@ SizedBox _buildTopBox(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'New collection',
+                'home.title'.tr().toTitleCase(),
                 style: context.textTheme.headline4!.copyWith(
                   color: context.colors.onSecondary,
                   fontWeight: FontWeight.bold,
@@ -67,7 +69,7 @@ SizedBox _buildSaleBox(BuildContext context) {
     child: Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text('Summer sale',
+        child: Text('home.sale'.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
               color: context.colors.primary,
             )),
@@ -92,7 +94,7 @@ SizedBox _buildBlackBox(BuildContext context) {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Black',
+              'home.black'.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
                 color: context.colors.onSecondary,
                 fontWeight: FontWeight.bold,
@@ -122,7 +124,7 @@ Container _buildHoodiesBox(BuildContext context) {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'Men\'s hoodies',
+              'home.hoodies'.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
                 color: context.colors.onSecondary,
                 fontWeight: FontWeight.bold,
