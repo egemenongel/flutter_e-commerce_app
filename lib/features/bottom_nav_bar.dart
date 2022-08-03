@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
-import 'package:ecommerce_app/features/bag/bag_view.dart';
-import 'package:ecommerce_app/features/favorites/favorites_view.dart';
-import 'package:ecommerce_app/features/home/view/home_view.dart';
-import 'package:ecommerce_app/features/profile/profile.dart';
-import 'package:ecommerce_app/features/shop/shop_view.dart';
+
+import 'package:ecommerce_app/features/views/bag/bag_view.dart';
+import 'package:ecommerce_app/features/views/favorites/favorites_view.dart';
+import 'package:ecommerce_app/features/views/home/view/home_view.dart';
+import 'package:ecommerce_app/features/views/profile/profile.dart';
+import 'package:ecommerce_app/features/views/shop/shop_view.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {

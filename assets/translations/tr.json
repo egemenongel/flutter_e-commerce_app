@@ -10,7 +10,7 @@
     },
     "home":{
         "title":"yeni koleksiyon",
-        "sale":"yaz indirimi",
+        "sale":"Yaz\nIndirimi",
         "hoodies":"erkek hoodie",
         "black":"siyah"
     },
@@ -26,7 +26,12 @@
         }
     },
     "bag":{
-        "title":"canta"
+        "title":"my bag",
+        "promo":"enter your promo code",
+        "total":"total amount",
+        "check_out":"check out",
+        "codes":"your promo codes",
+        "apply":"apply"
     },
     "favorites":{
         "title":"favoriler"

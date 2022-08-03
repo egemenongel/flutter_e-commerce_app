@@ -53,7 +53,7 @@ SizedBox _buildTopBox(BuildContext context) {
               child: Text(
                 'home.title'.tr().toTitleCase(),
                 style: context.textTheme.headline4!.copyWith(
-                  color: context.colors.onSecondary,
+                  color: context.colors.onPrimary,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -72,6 +72,7 @@ SizedBox _buildSaleBox(BuildContext context) {
         child: Text('home.sale'.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
               color: context.colors.primary,
+              fontWeight: FontWeight.bold,
             )),
       ),
     ),
@@ -96,7 +97,7 @@ SizedBox _buildBlackBox(BuildContext context) {
             child: Text(
               'home.black'.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
-                color: context.colors.onSecondary,
+                color: context.colors.onPrimary,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -126,7 +127,7 @@ Container _buildHoodiesBox(BuildContext context) {
             child: Text(
               'home.hoodies'.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
-                color: context.colors.onSecondary,
+                color: context.colors.onPrimary,
                 fontWeight: FontWeight.bold,
               ),
             ),

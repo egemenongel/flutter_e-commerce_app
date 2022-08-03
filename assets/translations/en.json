@@ -10,7 +10,7 @@
     },
     "home":{
         "title":"new collection",
-        "sale":"summer sale",
+        "sale":"Summer\nSale",
         "hoodies":"Men's hoodies",
         "black":"black"
     },
@@ -26,7 +26,12 @@
         }
     },
     "bag":{
-        "title":"bag"
+        "title":"my bag",
+        "promo":"enter your promo code",
+        "total":"total amount",
+        "check_out":"check out",
+        "codes":"your promo codes",
+        "apply":"apply"
     },
     "favorites":{
         "title":"favorites"
