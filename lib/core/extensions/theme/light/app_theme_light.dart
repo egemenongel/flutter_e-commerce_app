@@ -26,7 +26,7 @@ class AppThemeLight extends AppTheme {
       primary: ColorWheel.shojohiRed,
       onPrimary: ColorWheel.doctorWhite,
       secondary: ColorWheel.shojohiRed,
-      onSecondary: ColorWheel.doctorWhite,
+      onSecondary: Colors.black,
       background: ColorWheel.doctorWhite,
       onBackground: ColorWheel.shojohiRed,
       surface: ColorWheel.doctorWhite,
