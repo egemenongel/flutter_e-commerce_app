@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/constants/image_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:flutter/material.dart';
@@ -42,10 +43,7 @@ SizedBox _buildTopBox(BuildContext context) {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(
-            fit: BoxFit.fill,
-            'assets/images/image_1.png',
-          ),
+          Image.asset(fit: BoxFit.fill, ImagePaths.image1),
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
@@ -88,7 +86,7 @@ SizedBox _buildBlackBox(BuildContext context) {
       children: [
         Image.asset(
           fit: BoxFit.fill,
-          'assets/images/image_3.png',
+          ImagePaths.image3,
         ),
         Align(
           alignment: Alignment.centerLeft,
@@ -118,7 +116,7 @@ Container _buildHoodiesBox(BuildContext context) {
       children: [
         Image.asset(
           fit: BoxFit.fill,
-          'assets/images/image_2.png',
+          ImagePaths.image2,
         ),
         Align(
           alignment: Alignment.center,

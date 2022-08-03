@@ -27,8 +27,6 @@ class NetworkManager {
     bool isBaseResponse = true,
     isFile = false,
   }) async {
-    log(path);
-    var time = DateTime.now();
     data ??= {};
     try {
       var body = data is Map || data is FormData ? data : data.toJson();
@@ -40,7 +38,6 @@ class NetworkManager {
             contentType: isFile ? "multipart/form-data" : "application/json",
             method: method.name,
           ));
-      // log(response.realUri.toString());
 
       if (response.statusCode == 200) {
         if (response.data is List) {
