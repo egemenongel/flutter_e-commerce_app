@@ -15,10 +15,47 @@ class BagView extends StatelessWidget {
           children: [
             _buildTitle(context),
             _buildProducts(context),
+            _buildPromoButton(context),
             _buildTotal(context),
             _buildCheckOutButton(context)
           ],
         ),
+      ),
+    );
+  }
+
+  GestureDetector _buildPromoButton(BuildContext context) {
+    return GestureDetector(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Row(
+            children: [
+              const Spacer(),
+              Expanded(
+                flex: 12,
+                child: Container(
+                  height: 50,
+                  color: context.colors.onPrimary,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text('aaaa'),
+                      ]),
+                ),
+              ),
+              const Spacer(),
+            ],
+          ),
+          Positioned(
+            right: 0,
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.arrow_circle_right),
+              iconSize: 60,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -43,8 +80,9 @@ class BagView extends StatelessWidget {
 
   SizedBox _buildProducts(BuildContext context) {
     return SizedBox(
-      height: context.height * (3 / 5),
+      height: 450,
       child: ListView(
+        padding: EdgeInsets.zero,
         children: const [
           BagProductCard(),
           BagProductCard(),
