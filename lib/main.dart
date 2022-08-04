@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/theme/theme_notifier.dart';
 import 'package:ecommerce_app/utils/lang/language_manager.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      title: 'Ecommerce App',
+      title: ApplicationConstants.applicationName,
       theme: context.watch<ThemeNotifier>().currentTheme,
       routes: NavigationManager.routes,
     );

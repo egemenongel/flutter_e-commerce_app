@@ -15,7 +15,7 @@ class NetworkManager {
   NetworkManager.init() {
     dio = Dio(BaseOptions(
       baseUrl: ApiConstants.baseUrl,
-      contentType: 'application/json',
+      contentType: ApiConstants.json,
     ));
   }
   Future request<T extends BaseModel>({
@@ -35,7 +35,7 @@ class NetworkManager {
           data: body,
           queryParameters: queryParameters,
           options: Options(
-            contentType: isFile ? "multipart/form-data" : "application/json",
+            contentType: isFile ? ApiConstants.file : ApiConstants.json,
             method: method.name,
           ));
 
