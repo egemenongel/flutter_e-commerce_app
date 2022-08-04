@@ -9,8 +9,6 @@ class ShopState extends Equatable {
   final List<ProductModel>? products;
   final bool? isLoading;
 
-  @override
-  List<Object?> get props => [products, isLoading];
   ShopState copyWith({
     List<ProductModel>? products,
     bool? isLoading,
@@ -20,4 +18,7 @@ class ShopState extends Equatable {
       isLoading: isLoading ?? this.isLoading,
     );
   }
+
+  @override
+  List<Object?> get props => [products, isLoading];
 }

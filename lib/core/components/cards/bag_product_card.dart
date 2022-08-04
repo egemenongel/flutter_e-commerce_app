@@ -6,84 +6,120 @@ class BagProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 130,
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          _productImage(context),
-          _productDetails(context),
-        ],
-      ),
-    );
-  }
-
-  Expanded _productDetails(BuildContext context) {
-    return Expanded(
-      flex: 5,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: Column(
+    return Card(
+      child: SizedBox(
+        height: 130,
+        child: Row(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  't',
-                  style: context.textTheme.bodyText2!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
-              ],
-            ),
-            Row(
-              children: [
-                Text(
-                  'Size:',
-                  style: context.textTheme.caption!.copyWith(),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                          child: FloatingActionButton(
-                            foregroundColor: context.colors.onSecondary,
-                            backgroundColor: context.colors.onPrimary,
-                            onPressed: () {},
-                            child: const Icon(Icons.remove),
-                          ),
-                        ),
-                        const Text('1'),
-                        SizedBox(
-                          height: 30,
-                          child: FloatingActionButton(
-                            foregroundColor: context.colors.onSecondary,
-                            backgroundColor: context.colors.onPrimary,
-                            onPressed: () {},
-                            child: const Icon(Icons.add),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  const Text('51\$'),
-                ],
-              ),
-            )
+            _buildProductImage(),
+            _buildProductDetails(context),
           ],
         ),
       ),
     );
   }
 
-  Image _productImage(BuildContext context) =>
-      Image.asset('assets/images/image_1.png');
+  ClipRRect _buildProductImage() {
+    return ClipRRect(
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(4),
+        bottomLeft: Radius.circular(4), //Same with the card
+      ),
+      child: Image.asset('assets/images/image_1.png'),
+    );
+  }
+
+  Expanded _buildProductDetails(BuildContext context) {
+    return Expanded(
+      flex: 5,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            _buildTitle(context),
+            _buildSize(context),
+            const SizedBox(
+              height: 20,
+            ),
+            _buildQuantity(context)
+          ],
+        ),
+      ),
+    );
+  }
+
+  Row _buildTitle(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Product Title',
+          style: context.textTheme.bodyText2!
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+      ],
+    );
+  }
+
+  Row _buildSize(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          'Size: ',
+          style: context.textTheme.caption!.copyWith(),
+        ),
+        Text(
+          'M',
+          style:
+              context.textTheme.caption!.copyWith(fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+
+  Padding _buildQuantity(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(0.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 30,
+                  child: FloatingActionButton(
+                    foregroundColor: context.colors.onSurface,
+                    backgroundColor: context.colors.onPrimary,
+                    onPressed: () {},
+                    child: const Icon(Icons.remove),
+                  ),
+                ),
+                Text(
+                  '1',
+                  style: context.textTheme.subtitle1!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                  child: FloatingActionButton(
+                    foregroundColor: context.colors.onSurface,
+                    backgroundColor: context.colors.onPrimary,
+                    onPressed: () {},
+                    child: const Icon(Icons.add),
+                  ),
+                )
+              ],
+            ),
+          ),
+          Text(
+            '51\$',
+            style: context.textTheme.subtitle1!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
 }

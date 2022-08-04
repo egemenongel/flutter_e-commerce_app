@@ -5,7 +5,7 @@ import 'package:ecommerce_app/features/views/bag/bag_view.dart';
 import 'package:ecommerce_app/features/views/favorites/favorites_view.dart';
 import 'package:ecommerce_app/features/views/home/view/home_view.dart';
 import 'package:ecommerce_app/features/views/profile/profile.dart';
-import 'package:ecommerce_app/features/views/shop/shop_view.dart';
+import 'package:ecommerce_app/features/views/shop/view/shop_view.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
