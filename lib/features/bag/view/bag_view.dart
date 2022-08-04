@@ -119,7 +119,7 @@ class BagView extends StatelessWidget {
     return Padding(
       padding: context.paddingLow,
       child: MainElevatedButton(
-          onPressed: () {}, localizationKey: 'bag.check_out'),
+          onPressed: () {}, localizationKey: 'common.buttons.check_out'),
     );
   }
 }

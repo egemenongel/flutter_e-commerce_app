@@ -6,6 +6,10 @@
             "bag":"bag",
             "favorites":"favorites",
             "profile":"profile"
+        },
+        "buttons":{
+            "add_to_cart":"add to cart",
+            "check_out":"check out"
         }
     },
     "home":{
@@ -29,7 +33,6 @@
         "title":"my bag",
         "promo":"enter your promo code",
         "total":"total amount",
-        "check_out":"check out",
         "codes":"your promo codes",
         "apply":"apply"
     },
@@ -45,5 +48,9 @@
         "reviews":"my reviews",
         "settings":"settings"
 
+    },
+    "product_detail":{
+        "shipping_info":"shipping info",
+        "support":"support"
     }
 } 

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 class NavigationManager {
   static final routes = <String, Widget Function(BuildContext)>{
-    '/': (context) => const BaseView(),
+    BaseView.id: (context) => const BaseView(),
+    // ProductDetailView.id: (context) => const ProductDetailView(),
   };
 }

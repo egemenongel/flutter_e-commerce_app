@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 class BaseView extends StatefulWidget {
   const BaseView({Key? key}) : super(key: key);
-
+  static const id = '/';
   @override
   State<BaseView> createState() => _BaseViewState();
 }
@@ -23,7 +23,7 @@ class _BaseViewState extends State<BaseView> {
     });
   }
 
-  static const List<Widget> _homeSubViews = <Widget>[
+  static const List<Widget> _navItems = <Widget>[
     HomeView(),
     ShopView(),
     BagView(),
@@ -34,7 +34,7 @@ class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _homeSubViews.elementAt(_selectedIndex),
+      body: _navItems.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
