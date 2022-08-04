@@ -37,6 +37,13 @@
         "title":"favorites"
     },
     "profile":{
-        "profile":"profile"
+        "title":"my profile",
+        "orders":"my orders",
+        "addresses":"shipping addresses",
+        "methods":"payment methods",
+        "codes":"promotion codes",
+        "reviews":"my reviews",
+        "settings":"settings"
+
     }
 } 

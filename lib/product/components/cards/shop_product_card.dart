@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
-import 'package:ecommerce_app/features/models/product_model.dart';
+import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ShopProductCard extends StatelessWidget {

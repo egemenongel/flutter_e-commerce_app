@@ -1,21 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
+import 'package:ecommerce_app/features/bag/bag_view.dart';
+import 'package:ecommerce_app/features/favorites/favorites_view.dart';
+import 'package:ecommerce_app/features/home/view/home_view.dart';
+import 'package:ecommerce_app/features/profile/profile.dart';
+import 'package:ecommerce_app/features/shop/view/shop_view.dart';
 
-import 'package:ecommerce_app/features/views/bag/bag_view.dart';
-import 'package:ecommerce_app/features/views/favorites/favorites_view.dart';
-import 'package:ecommerce_app/features/views/home/view/home_view.dart';
-import 'package:ecommerce_app/features/views/profile/profile.dart';
-import 'package:ecommerce_app/features/views/shop/view/shop_view.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+class BaseView extends StatefulWidget {
+  const BaseView({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
+  State<BaseView> createState() => _BaseViewState();
 }
 
-class _BottomNavBarState extends State<BottomNavBar> {
+class _BaseViewState extends State<BaseView> {
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     setState(() {

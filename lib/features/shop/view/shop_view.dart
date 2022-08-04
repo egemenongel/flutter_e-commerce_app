@@ -1,7 +1,7 @@
-import 'package:ecommerce_app/core/components/cards/shop_product_card.dart';
-import 'package:ecommerce_app/core/components/custom_app_bar.dart';
-import 'package:ecommerce_app/features/views/shop/cubit/shop_cubit.dart';
-import 'package:ecommerce_app/features/views/shop/service/shop_service.dart';
+import 'package:ecommerce_app/features/shop/cubit/shop_cubit.dart';
+import 'package:ecommerce_app/features/shop/service/shop_service.dart';
+import 'package:ecommerce_app/product/components/cards/shop_product_card.dart';
+import 'package:ecommerce_app/core/components/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

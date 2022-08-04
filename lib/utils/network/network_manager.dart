@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:ecommerce_app/core/base/base_model.dart';
+import 'package:ecommerce_app/core/base/model/base_model.dart';
 import 'package:ecommerce_app/core/constants/api_constants.dart';
 import 'package:ecommerce_app/core/constants/enums/request_types.dart';
 

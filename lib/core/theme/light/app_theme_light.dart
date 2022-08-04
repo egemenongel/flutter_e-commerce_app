@@ -1,8 +1,8 @@
-import 'package:ecommerce_app/core/extensions/theme/app_theme.dart';
-import 'package:ecommerce_app/core/extensions/theme/color_wheel.dart';
+import 'package:ecommerce_app/core/theme/app_theme.dart';
+import 'package:ecommerce_app/core/theme/color_wheel.dart';
 import 'package:flutter/material.dart';
 
-class AppThemeLight extends AppTheme {
+class AppThemeLight extends AppTheme{
   static AppThemeLight? _instance;
   static AppThemeLight get instance {
     return _instance ??= AppThemeLight._init();

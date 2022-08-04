@@ -1,5 +1,5 @@
-import 'package:ecommerce_app/core/extensions/theme/app_theme.dart';
-import 'package:ecommerce_app/core/extensions/theme/color_wheel.dart';
+import 'package:ecommerce_app/core/theme/app_theme.dart';
+import 'package:ecommerce_app/core/theme/color_wheel.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeDark extends AppTheme {

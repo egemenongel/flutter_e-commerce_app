@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/core/base/base_model.dart';
+import 'package:ecommerce_app/core/base/model/base_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product_model.g.dart';

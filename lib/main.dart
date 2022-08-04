@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_app/core/constants/application_constants.dart';
-import 'package:ecommerce_app/core/extensions/theme/theme_notifier.dart';
-import 'package:ecommerce_app/core/lang/language_manager.dart';
-import 'package:ecommerce_app/features/bottom_nav_bar.dart';
+import 'package:ecommerce_app/core/constants/asset_paths.dart';
+import 'package:ecommerce_app/core/theme/theme_notifier.dart';
+import 'package:ecommerce_app/utils/lang/language_manager.dart';
+import 'package:ecommerce_app/utils/navigation/navigation_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +12,7 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: LanguageManager.supportedLocales,
-      path: ApplicationConstants.translationsPath,
+      path: AssetPaths.translationsPath,
       fallbackLocale: LanguageManager.enLocale,
       child: MultiProvider(providers: [
         ChangeNotifierProvider(create: (_) => ThemeNotifier()),
@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Ecommerce App',
-      home: const BottomNavBar(),
       theme: context.watch<ThemeNotifier>().currentTheme,
+      routes: NavigationManager.routes,
     );
   }
 }
