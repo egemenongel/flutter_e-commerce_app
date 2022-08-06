@@ -6,6 +6,10 @@
             "bag":"canta",
             "favorites":"favoriler",
             "profile":"profil"
+        },
+        "buttons":{
+            "add_to_cart":"cantana ekle",
+            "check_out":"siparis ver"
         }
     },
     "home":{
@@ -26,17 +30,28 @@
         }
     },
     "bag":{
-        "title":"my bag",
-        "promo":"enter your promo code",
-        "total":"total amount",
-        "check_out":"check out",
-        "codes":"your promo codes",
-        "apply":"apply"
+        "title":"cantam",
+        "promo":"promosyon kodunu gir",
+        "total":"toplam tutar",
+        "codes":"promosyon kodlarin",
+        "apply":"uygula"
     },
     "favorites":{
         "title":"favoriler"
     },
     "profile":{
-        "profile":"profil"
+        "title":"profilim",
+        "orders":"siparislerim",
+        "addresses":"adreslerim",
+        "methods":"odeme yontemlerim",
+        "codes":"kodlarim",
+        "reviews":"incelemelerim",
+        "settings":"ayarlar",
+        "isim":"name",
+        "e-posta":"mail"
+    },
+    "product_detail":{
+        "shipping_info":"gonderim bilgisi",
+        "support":"destek"
     }
 } 

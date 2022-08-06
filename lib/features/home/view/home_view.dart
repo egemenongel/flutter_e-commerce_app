@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
+import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -49,7 +50,7 @@ SizedBox _buildTopBox(BuildContext context) {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'home.title'.tr().toTitleCase(),
+                LocaleKeys.home_title.tr().toTitleCase(),
                 style: context.textTheme.headline4!.copyWith(
                   color: context.colors.onPrimary,
                   fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ SizedBox _buildSaleBox(BuildContext context) {
     child: Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text('home.sale'.tr().toTitleCase(),
+        child: Text(LocaleKeys.home_sale.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
               color: context.colors.primary,
               fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ SizedBox _buildBlackBox(BuildContext context) {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'home.black'.tr().toTitleCase(),
+              LocaleKeys.home_black.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
                 color: context.colors.onPrimary,
                 fontWeight: FontWeight.bold,
@@ -123,7 +124,7 @@ Container _buildHoodiesBox(BuildContext context) {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              'home.hoodies'.tr().toTitleCase(),
+              LocaleKeys.home_hoodies.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
                 color: context.colors.onPrimary,
                 fontWeight: FontWeight.bold,

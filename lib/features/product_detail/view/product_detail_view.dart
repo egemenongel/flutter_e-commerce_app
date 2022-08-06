@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/theme/color_wheel.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
+import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -37,7 +38,7 @@ class ProductDetailView extends StatelessWidget {
               color: context.colors.onPrimary,
               child: MainElevatedButton(
                   onPressed: () {},
-                  localizationKey: 'common.buttons.add_to_cart'),
+                  localizationKey: LocaleKeys.common_buttons_add_to_cart),
             ),
           ),
         ],
@@ -68,18 +69,23 @@ class ProductDetailView extends StatelessWidget {
           ),
           _buildDescription(),
           ExpansionTile(
-            title: Text('product_detail.shipping_info'.tr()),
+            title: Text(
+              LocaleKeys.product_detail_shipping_info.tr().toTitleCase(),
+            ),
             children: [
               ListTile(
-                title: Text('product_detail.shipping_info'.tr()),
+                title: Text(
+                  LocaleKeys.product_detail_shipping_info.tr().toTitleCase(),
+                ),
               ),
             ],
           ),
           ExpansionTile(
-            title: Text('product_detail.support'.tr()),
+            title: Text(LocaleKeys.product_detail_support.tr().toTitleCase()),
             children: [
               ListTile(
-                title: Text('product_detail.support'.tr()),
+                title:
+                    Text(LocaleKeys.product_detail_support.tr().toTitleCase()),
               ),
             ],
           ),

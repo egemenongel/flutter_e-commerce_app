@@ -15,10 +15,13 @@ void main() async {
       supportedLocales: LanguageManager.supportedLocales,
       path: AssetPaths.translationsPath,
       fallbackLocale: LanguageManager.enLocale,
-      child: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (_) => ThemeNotifier()),
-      ], child: const MyApp()),
-    ),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ThemeNotifier()),
+        ],
+        child: const MyApp(),
+      ),
+    ), 
   );
 }
 

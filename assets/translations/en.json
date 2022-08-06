@@ -8,7 +8,7 @@
             "profile":"profile"
         },
         "buttons":{
-            "add_to_cart":"add to cart",
+            "add_to_cart":"add to bag",
             "check_out":"check out"
         }
     },
@@ -46,8 +46,9 @@
         "methods":"payment methods",
         "codes":"promotion codes",
         "reviews":"my reviews",
-        "settings":"settings"
-
+        "settings":"settings",
+        "name":"name",
+        "mail":"mail"
     },
     "product_detail":{
         "shipping_info":"shipping info",

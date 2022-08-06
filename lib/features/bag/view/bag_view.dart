@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
 import 'package:ecommerce_app/core/components/cards/bag_product_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class BagView extends StatelessWidget {
@@ -39,8 +41,8 @@ class BagView extends StatelessWidget {
                   color: context.colors.onPrimary,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text('aaaa'),
+                      children: [
+                        const Text(LocaleKeys.bag_promo).tr(),
                       ]),
                 ),
               ),
@@ -67,12 +69,12 @@ class BagView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            'My Bag',
+            LocaleKeys.bag_title,
             style: context.textTheme.headline4!.copyWith(
               color: context.colors.onSecondary,
               fontWeight: FontWeight.bold,
             ),
-          ),
+          ).tr(),
         ],
       ),
     );
@@ -99,11 +101,11 @@ class BagView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'bag.total',
+            LocaleKeys.bag_total,
             style: context.textTheme.headline6!.copyWith(
               fontWeight: FontWeight.normal,
             ),
-          ),
+          ).tr(),
           Text(
             '1221\$',
             style: context.textTheme.headline6!.copyWith(
@@ -119,7 +121,8 @@ class BagView extends StatelessWidget {
     return Padding(
       padding: context.paddingLow,
       child: MainElevatedButton(
-          onPressed: () {}, localizationKey: 'common.buttons.check_out'),
+          onPressed: () {},
+          localizationKey: LocaleKeys.common_buttons_check_out),
     );
   }
 }
