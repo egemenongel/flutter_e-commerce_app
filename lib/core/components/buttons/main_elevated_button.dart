@@ -2,14 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MainElevatedButton extends StatelessWidget {
-  MainElevatedButton({
+  const MainElevatedButton({
     Key? key,
     required this.onPressed,
     required this.localizationKey,
   }) : super(key: key);
 
-  VoidCallback onPressed;
-  String localizationKey;
+  final VoidCallback onPressed;
+  final String localizationKey;
   @override
   Widget build(BuildContext context) {
     return Row(

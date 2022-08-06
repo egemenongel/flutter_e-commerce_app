@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailView extends StatelessWidget {
-  ProductDetailView({Key? key, required this.productModel}) : super(key: key);
+  const ProductDetailView({Key? key, required this.productModel})
+      : super(key: key);
   static const id = '/productDetail';
-  ProductModel productModel;
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

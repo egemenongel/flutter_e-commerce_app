@@ -84,34 +84,32 @@ class BagProductCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            child: Row(
-              children: [
-                SizedBox(
-                  height: 30,
-                  child: FloatingActionButton(
-                    foregroundColor: context.colors.onSurface,
-                    backgroundColor: context.colors.onPrimary,
-                    onPressed: () {},
-                    child: const Icon(Icons.remove),
-                  ),
+          Row(
+            children: [
+              SizedBox(
+                height: 30,
+                child: FloatingActionButton(
+                  foregroundColor: context.colors.onSurface,
+                  backgroundColor: context.colors.onPrimary,
+                  onPressed: () {},
+                  child: const Icon(Icons.remove),
                 ),
-                Text(
-                  '1',
-                  style: context.textTheme.subtitle1!
-                      .copyWith(fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '1',
+                style: context.textTheme.subtitle1!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 30,
+                child: FloatingActionButton(
+                  foregroundColor: context.colors.onSurface,
+                  backgroundColor: context.colors.onPrimary,
+                  onPressed: () {},
+                  child: const Icon(Icons.add),
                 ),
-                SizedBox(
-                  height: 30,
-                  child: FloatingActionButton(
-                    foregroundColor: context.colors.onSurface,
-                    backgroundColor: context.colors.onPrimary,
-                    onPressed: () {},
-                    child: const Icon(Icons.add),
-                  ),
-                )
-              ],
-            ),
+              )
+            ],
           ),
           Text(
             '51\$',
