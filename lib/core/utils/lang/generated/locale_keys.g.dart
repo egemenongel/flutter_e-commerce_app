@@ -1,8 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-// ignore_for_file: constant_identifier_names
-
-abstract class LocaleKeys {
+abstract class  LocaleKeys {
   static const common_nav_home = 'common.nav.home';
   static const common_nav_shop = 'common.nav.shop';
   static const common_nav_bag = 'common.nav.bag';
@@ -11,9 +9,11 @@ abstract class LocaleKeys {
   static const common_nav = 'common.nav';
   static const common_buttons_add_to_cart = 'common.buttons.add_to_cart';
   static const common_buttons_check_out = 'common.buttons.check_out';
-  static const common_buttons_continue_shopping =
-      'common.buttons.continue_shopping';
+  static const common_buttons_continue_shopping = 'common.buttons.continue_shopping';
   static const common_buttons = 'common.buttons';
+  static const common_placeholder_name = 'common.placeholder.name';
+  static const common_placeholder_mail = 'common.placeholder.mail';
+  static const common_placeholder = 'common.placeholder';
   static const common = 'common';
   static const home_title = 'home.title';
   static const home_sale = 'home.sale';
@@ -44,8 +44,7 @@ abstract class LocaleKeys {
   static const profile_codes = 'profile.codes';
   static const profile_reviews = 'profile.reviews';
   static const profile_settings = 'profile.settings';
-  static const profile_name = 'profile.name';
-  static const profile_mail = 'profile.mail';
+  static const profile_theme = 'profile.theme';
   static const profile = 'profile';
   static const product_detail_shipping_info = 'product_detail.shipping_info';
   static const product_detail_support = 'product_detail.support';
@@ -53,4 +52,5 @@ abstract class LocaleKeys {
   static const success_title = 'success.title';
   static const success_thanks = 'success.thanks';
   static const success = 'success';
+
 }

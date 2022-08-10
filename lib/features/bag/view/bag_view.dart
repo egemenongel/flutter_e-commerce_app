@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
 import 'package:ecommerce_app/core/components/cards/bag_product_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/success/view/success_view.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class BagView extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(LocaleKeys.bag_promo).tr(),
+                        Text(LocaleKeys.bag_promo.tr().toCapitalized())
                       ]),
                 ),
               ),
@@ -52,13 +53,10 @@ class BagView extends StatelessWidget {
           ),
           Positioned(
             right: 0,
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_right,
-                color: context.colors.onSurface,
-              ),
-              iconSize: 60,
+            child: Icon(
+              Icons.arrow_right,
+              color: context.colors.onSurface,
+              size: 60,
             ),
           ),
         ],
@@ -73,12 +71,12 @@ class BagView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(
-            LocaleKeys.bag_title,
+            LocaleKeys.bag_title.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
               color: context.colors.onSecondary,
               fontWeight: FontWeight.bold,
             ),
-          ).tr(),
+          )
         ],
       ),
     );
@@ -105,12 +103,12 @@ class BagView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            LocaleKeys.bag_total,
+            LocaleKeys.bag_total.tr().toTitleCase(),
             style: context.textTheme.headline6!.copyWith(
               color: context.colors.onBackground,
               fontWeight: FontWeight.normal,
             ),
-          ).tr(),
+          ),
           Text(
             '1221\$',
             style: context.textTheme.headline6!.copyWith(

@@ -11,6 +11,10 @@
             "add_to_cart":"add to bag",
             "check_out":"check out",
             "continue_shopping":"continue shopping"
+        },
+        "placeholder":{
+            "name":"John Doe",
+            "mail":"johndoe@gmail.com"
         }
     },
     "home":{
@@ -48,8 +52,7 @@
         "codes":"promotion codes",
         "reviews":"my reviews",
         "settings":"settings",
-        "name":"name",
-        "mail":"mail"
+        "theme":"dark theme"
     },
     "product_detail":{
         "shipping_info":"shipping info",

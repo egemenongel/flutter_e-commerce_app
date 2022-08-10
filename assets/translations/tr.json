@@ -11,6 +11,10 @@
             "add_to_cart":"çantana ekle",
             "check_out":"sipariş ver",
             "continue_shopping":"alisverise devam et"
+        },
+        "placeholder":{
+            "name":"John Doe",
+            "mail":"johndoe@gmail.com"
         }
     },
     "home":{
@@ -48,8 +52,7 @@
         "codes":"kodlarım",
         "reviews":"incelemelerim",
         "settings":"ayarlar",
-        "isim":"name",
-        "e-posta":"mail"
+        "theme":"koyu tema"
     },
     "product_detail":{
         "shipping_info":"gönderim bilgisi",

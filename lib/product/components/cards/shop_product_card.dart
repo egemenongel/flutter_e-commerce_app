@@ -11,8 +11,12 @@ class ShopProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) =>  ProductDetailView(productModel: productModel,))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ProductDetailView(
+                    productModel: productModel,
+                  ))),
       //  Navigator.pushNamed(context, ProductDetailView.id),
       child: Stack(
         alignment: Alignment.center,

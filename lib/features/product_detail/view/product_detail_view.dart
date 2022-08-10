@@ -25,7 +25,7 @@ class ProductDetailView extends StatelessWidget {
           SingleChildScrollView(
               child: Column(
             children: [
-              _buildImage(),
+              _buildImage(context),
               _buildActions(context),
               _buildDetails(context),
               Align(
@@ -53,14 +53,14 @@ class ProductDetailView extends StatelessWidget {
     );
   }
 
-  Stack _buildImage() {
-    return Stack(
-      children: [
-        Image.network(
-          productModel.image ?? ApplicationConstants.dummyImage,
-          fit: BoxFit.fitWidth,
-        ),
-      ],
+  Container _buildImage(BuildContext context) {
+    return Container(
+      padding: context.paddingLow,
+      height: 500,
+      child: Image.network(
+        productModel.image ?? ApplicationConstants.dummyImage,
+        fit: BoxFit.fitWidth,
+      ),
     );
   }
 
