@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/components/buttons/custom_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
@@ -14,15 +15,18 @@ class ProductDetailView extends StatelessWidget {
       : super(key: key);
   static const id = '/productDetail';
   final ProductModel productModel;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _buildAppBar(context),
       body: Stack(
         children: [
           SingleChildScrollView(
               child: Column(
             children: [
               _buildImage(),
+              _buildActions(context),
               _buildDetails(context),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -32,15 +36,48 @@ class ProductDetailView extends StatelessWidget {
               ),
             ],
           )),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              padding: const EdgeInsets.all(20),
-              color: context.colors.onPrimary,
-              child: MainElevatedButton(
-                  onPressed: () {},
-                  localizationKey: LocaleKeys.common_buttons_add_to_cart),
-            ),
+          _buildAddToCartButton(context),
+        ],
+      ),
+    );
+  }
+
+  AppBar _buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: context.colors.onPrimary,
+      foregroundColor: context.colors.onSecondary,
+      title: Text(
+        productModel.title!,
+      ),
+      actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.share))],
+    );
+  }
+
+  Stack _buildImage() {
+    return Stack(
+      children: [
+        Image.network(
+          productModel.image ?? ApplicationConstants.dummyImage,
+          fit: BoxFit.fitWidth,
+        ),
+      ],
+    );
+  }
+
+  Padding _buildActions(BuildContext context) {
+    return Padding(
+      padding: context.paddingLow,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const CustomDropdownButton(
+            items: ['Small', 'Medium', 'Large'],
+          ),
+          Container(
+            decoration: const BoxDecoration(
+                shape: BoxShape.circle, color: Colors.white),
+            child: IconButton(
+                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
           ),
         ],
       ),
@@ -95,13 +132,6 @@ class ProductDetailView extends StatelessWidget {
     );
   }
 
-  Image _buildImage() {
-    return Image.network(
-      productModel.image ?? ApplicationConstants.dummyImage,
-      fit: BoxFit.fitWidth,
-    );
-  }
-
   Text _buildTitle(BuildContext context) {
     return Text(
       '${productModel.title!.split(' ')[0]} ${productModel.title!.split(' ')[1]} ${productModel.title!.split(' ')[2]}',
@@ -146,4 +176,17 @@ class ProductDetailView extends StatelessWidget {
   }
 
   Text _buildDescription() => Text('${productModel.description}');
+
+  Align _buildAddToCartButton(BuildContext context) {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        color: context.colors.onPrimary,
+        child: MainElevatedButton(
+            onPressed: () {},
+            localizationKey: LocaleKeys.common_buttons_add_to_cart),
+      ),
+    );
+  }
 }

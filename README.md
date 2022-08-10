@@ -5,6 +5,6 @@ A new Flutter project.
 ## Tools I Used
 
 - [ ] BLoC Pattern for State Management
-- [ ] Easy Localization
+- [X] Easy Localization
 - [ ] Lottie
-
+- [ ] Image Cache
