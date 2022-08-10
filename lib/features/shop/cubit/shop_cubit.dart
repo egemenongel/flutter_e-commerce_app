@@ -7,6 +7,7 @@ part 'shop_state.dart';
 
 class ShopCubit extends Cubit<ShopState> {
   ShopCubit(this.shopService) : super(const ShopState()) {
+    //initState
     fetchAllProducts();
   }
   final ShopService shopService;

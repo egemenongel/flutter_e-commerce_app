@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/shop/cubit/shop_cubit.dart';
 import 'package:ecommerce_app/features/shop/service/shop_service.dart';
 import 'package:ecommerce_app/product/components/cards/shop_product_card.dart';
@@ -25,19 +26,27 @@ class ShopView extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        return GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              bool isLoading = state.isLoading ?? true;
-              return isLoading
-                  ? const CircularProgressIndicator()
-                  : ShopProductCard(
-                      productModel: state.products![index],
-                    );
-            },
-            itemCount: state.products?.length ?? 0);
+        return RefreshIndicator(
+          onRefresh: () async {
+            await context.read<ShopCubit>().fetchAllProducts();
+          },
+          child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                bool isLoading = state.isLoading ?? true;
+                return isLoading
+                    ? Padding(
+                        padding: context.paddingHigh,
+                        child: const CircularProgressIndicator(),
+                      )
+                    : ShopProductCard(
+                        productModel: state.products![index],
+                      );
+              },
+              itemCount: state.products?.length ?? 0),
+        );
       },
     );
   }
