@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/core/constants/api_constants.dart';
 import 'package:ecommerce_app/core/constants/enums/request_types.dart';
+import 'package:ecommerce_app/core/utils/network/network_manager.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
-import 'package:ecommerce_app/utils/network/network_manager.dart';
 
 class ShopService {
   final NetworkManager? _networkManager = NetworkManager.instance;

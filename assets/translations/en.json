@@ -9,7 +9,8 @@
         },
         "buttons":{
             "add_to_cart":"add to bag",
-            "check_out":"check out"
+            "check_out":"check out",
+            "continue_shopping":"continue shopping"
         }
     },
     "home":{
@@ -53,5 +54,9 @@
     "product_detail":{
         "shipping_info":"shipping info",
         "support":"support"
+    },
+    "success":{
+        "title":"success!",
+        "thanks":"Your order will be delivered soon.\nThank you for choosing our app!"
     }
 } 

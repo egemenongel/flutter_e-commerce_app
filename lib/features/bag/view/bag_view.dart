@@ -2,7 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
 import 'package:ecommerce_app/core/components/cards/bag_product_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
-import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/features/success/view/success_view.dart';
 import 'package:flutter/material.dart';
 
 class BagView extends StatelessWidget {
@@ -125,7 +126,9 @@ class BagView extends StatelessWidget {
     return Padding(
       padding: context.paddingLow,
       child: MainElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(SuccessView.id);
+          },
           localizationKey: LocaleKeys.common_buttons_check_out),
     );
   }

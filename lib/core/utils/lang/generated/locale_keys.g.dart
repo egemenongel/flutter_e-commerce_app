@@ -11,6 +11,8 @@ abstract class LocaleKeys {
   static const common_nav = 'common.nav';
   static const common_buttons_add_to_cart = 'common.buttons.add_to_cart';
   static const common_buttons_check_out = 'common.buttons.check_out';
+  static const common_buttons_continue_shopping =
+      'common.buttons.continue_shopping';
   static const common_buttons = 'common.buttons';
   static const common = 'common';
   static const home_title = 'home.title';
@@ -48,4 +50,7 @@ abstract class LocaleKeys {
   static const product_detail_shipping_info = 'product_detail.shipping_info';
   static const product_detail_support = 'product_detail.support';
   static const product_detail = 'product_detail';
+  static const success_title = 'success.title';
+  static const success_thanks = 'success.thanks';
+  static const success = 'success';
 }

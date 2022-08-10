@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
-import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {

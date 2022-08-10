@@ -1,23 +1,22 @@
-import 'package:ecommerce_app/core/theme/app_theme.dart';
-import 'package:ecommerce_app/core/theme/color_wheel.dart';
+import 'package:ecommerce_app/core/utils/theme/app_theme.dart';
+import 'package:ecommerce_app/core/utils/theme/color_wheel.dart';
 import 'package:flutter/material.dart';
 
-class AppThemeDark extends AppTheme {
-  static AppThemeDark? _instance;
-  static AppThemeDark get instance {
-    return _instance ??= AppThemeDark._init();
+class AppThemeLight extends AppTheme {
+  static AppThemeLight? _instance;
+  static AppThemeLight get instance {
+    return _instance ??= AppThemeLight._init();
   }
 
-  AppThemeDark._init();
+  AppThemeLight._init();
 
   @override
   ThemeData get theme => ThemeData(
       colorScheme: _appColorScheme,
-      canvasColor: const Color(0xff2C3333),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         selectedItemColor: ColorWheel.shojohiRed,
-        unselectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black54,
         showUnselectedLabels: true,
         selectedIconTheme: const IconThemeData(
           color: ColorWheel.shojohiRed,
@@ -29,10 +28,10 @@ class AppThemeDark extends AppTheme {
       onPrimary: Colors.white,
       secondary: ColorWheel.shojohiRed,
       onSecondary: Colors.black,
-      background: Color.fromARGB(255, 61, 75, 75),
-      onBackground: Colors.white,
-      surface: Color(0xff2C3333),
-      onSurface: Colors.white,
+      background: ColorWheel.doctorWhite,
+      onBackground: Colors.black,
+      surface: ColorWheel.doctorWhite,
+      onSurface: Colors.grey,
       error: Colors.red,
       onError: ColorWheel.doctorWhite,
       brightness: Brightness.light,

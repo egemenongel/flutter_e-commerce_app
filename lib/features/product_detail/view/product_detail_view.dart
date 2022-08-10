@@ -4,9 +4,9 @@ import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart'
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
-import 'package:ecommerce_app/core/theme/color_wheel.dart';
+import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/core/utils/theme/color_wheel.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
-import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 

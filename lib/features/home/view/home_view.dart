@@ -2,20 +2,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
-import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
-  static String id = '/';
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          _buildTopBox(context),
-          Container(
-            height: context.height / 2,
+    return Column(
+      children: [
+        Expanded(child: _buildTopBox(context)),
+        Expanded(
+          child: Container(
             color: context.colors.onPrimary,
             child: Row(
               children: [
@@ -23,8 +21,8 @@ class HomeView extends StatelessWidget {
                   width: context.width / 2,
                   child: Column(
                     children: [
-                      _buildSaleBox(context),
-                      _buildBlackBox(context),
+                      Expanded(child: _buildSaleBox(context)),
+                      Expanded(child: _buildBlackBox(context)),
                     ],
                   ),
                 ),
@@ -32,8 +30,8 @@ class HomeView extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
