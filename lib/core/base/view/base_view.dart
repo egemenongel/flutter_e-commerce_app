@@ -5,6 +5,7 @@ import 'package:ecommerce_app/features/favorites/view/favorites_view.dart';
 import 'package:ecommerce_app/features/home/view/home_view.dart';
 import 'package:ecommerce_app/features/profile/view/profile_view.dart';
 import 'package:ecommerce_app/features/shop/view/shop_view.dart';
+import 'package:ecommerce_app/utils/lang/generated/locale_keys.g.dart';
 
 import 'package:flutter/material.dart';
 
@@ -34,30 +35,30 @@ class _BaseViewState extends State<BaseView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _navItems.elementAt(_selectedIndex),
+      body: _navItems[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
           onTap: _onItemTapped,
           currentIndex: _selectedIndex,
           items: [
             BottomNavigationBarItem(
               icon: const Icon(Icons.home),
-              label: 'common.nav.home'.tr().toTitleCase(),
+              label: LocaleKeys.common_nav_home.tr().toTitleCase(),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              label: 'common.nav.shop'.tr().toTitleCase(),
+              icon: const Icon(Icons.shopping_cart),
+              label: LocaleKeys.common_nav_shop.tr().toTitleCase(),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.shopping_bag_outlined),
-              label: 'common.nav.bag'.tr().toTitleCase(),
+              icon: const Icon(Icons.shopping_bag),
+              label: LocaleKeys.common_nav_bag.tr().toTitleCase(),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.favorite_border),
-              label: 'common.nav.favorites'.tr().toTitleCase(),
+              icon: const Icon(Icons.favorite),
+              label: LocaleKeys.common_nav_favorites.tr().toTitleCase(),
             ),
             BottomNavigationBarItem(
-              icon: const Icon(Icons.person_outline_outlined),
-              label: 'common.nav.profile'.tr().toTitleCase(),
+              icon: const Icon(Icons.person),
+              label: LocaleKeys.common_nav_profile.tr().toTitleCase(),
             ),
           ]),
     );

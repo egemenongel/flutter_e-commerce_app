@@ -1,10 +1,7 @@
-import 'package:ecommerce_app/core/constants/enums/app_theme_enum.dart';
-import 'package:ecommerce_app/core/theme/dark/app_theme_dark.dart';
+part of 'theme_cubit.dart';
 
-import 'package:ecommerce_app/core/theme/light/app_theme_light.dart';
-import 'package:flutter/material.dart';
-
-class ThemeNotifier extends ChangeNotifier {
+class ThemeState {
+  final bool isDark;
   ThemeData _currentTheme = AppThemeLight.instance.theme;
 
   AppTheme _currentThemeEnum = AppTheme.light;
@@ -13,15 +10,17 @@ class ThemeNotifier extends ChangeNotifier {
 
   ThemeData get currentTheme => _currentTheme;
 
-  void changeTheme() {
-    if (_currentThemeEnum == AppTheme.light) {
+  ThemeState({required this.isDark}) {
+    if (isDark == true) {
       _currentTheme = AppThemeDark.instance.theme;
       _currentThemeEnum = AppTheme.dark;
     } else {
       _currentTheme = AppThemeLight.instance.theme;
-
       _currentThemeEnum = AppTheme.light;
     }
-    notifyListeners();
+  }
+
+  ThemeState copyWith({bool? changeTheme}) {
+    return ThemeState(isDark: changeTheme ?? isDark);
   }
 }

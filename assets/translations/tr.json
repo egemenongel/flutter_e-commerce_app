@@ -2,38 +2,38 @@
     "common":{
         "nav":{
             "home":"ana sayfa",
-            "shop":"magaza",
-            "bag":"canta",
+            "shop":"mağaza",
+            "bag":"çanta",
             "favorites":"favoriler",
             "profile":"profil"
         },
         "buttons":{
-            "add_to_cart":"cantana ekle",
-            "check_out":"siparis ver"
+            "add_to_cart":"çantana ekle",
+            "check_out":"sipariş ver"
         }
     },
     "home":{
         "title":"yeni koleksiyon",
-        "sale":"Yaz\nIndirimi",
+        "sale":"Yaz\nİndirimi",
         "hoodies":"erkek hoodie",
         "black":"siyah"
     },
     "shop":{
-        "title":"Urunler",
-        "sort":"Suna gore sirala",
+        "title":"Ürünler",
+        "sort":"Suna göre sırala",
         "sort_types":{
-            "popular":"populer",
+            "popular":"popüler",
             "newest":"en yeni",
-            "reviews":"kullanici incelemesi",
-            "price_low":"Fiyat: Yuksekten Dusuge",
-            "price_high":"Fiyat: Dusukten Yuksege"
+            "reviews":"kullanıcı incelemesi",
+            "price_low":"Fiyat: Yüksekten Düşüğe",
+            "price_high":"Fiyat: Düşükten Yükseğe"
         }
     },
     "bag":{
-        "title":"cantam",
+        "title":"çantam",
         "promo":"promosyon kodunu gir",
         "total":"toplam tutar",
-        "codes":"promosyon kodlarin",
+        "codes":"promosyon kodların",
         "apply":"uygula"
     },
     "favorites":{
@@ -41,17 +41,17 @@
     },
     "profile":{
         "title":"profilim",
-        "orders":"siparislerim",
+        "orders":"siparişlerim",
         "addresses":"adreslerim",
-        "methods":"odeme yontemlerim",
-        "codes":"kodlarim",
+        "methods":"ödeme yöntemlerim",
+        "codes":"kodlarım",
         "reviews":"incelemelerim",
         "settings":"ayarlar",
         "isim":"name",
         "e-posta":"mail"
     },
     "product_detail":{
-        "shipping_info":"gonderim bilgisi",
+        "shipping_info":"gönderim bilgisi",
         "support":"destek"
     }
 } 

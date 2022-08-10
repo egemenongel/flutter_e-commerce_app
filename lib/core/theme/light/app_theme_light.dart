@@ -2,7 +2,7 @@ import 'package:ecommerce_app/core/theme/app_theme.dart';
 import 'package:ecommerce_app/core/theme/color_wheel.dart';
 import 'package:flutter/material.dart';
 
-class AppThemeLight extends AppTheme{
+class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
   static AppThemeLight get instance {
     return _instance ??= AppThemeLight._init();
@@ -13,26 +13,27 @@ class AppThemeLight extends AppTheme{
   @override
   ThemeData get theme => ThemeData(
       colorScheme: _appColorScheme,
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData().copyWith(
+        backgroundColor: Colors.white,
         selectedItemColor: ColorWheel.shojohiRed,
         unselectedItemColor: Colors.black54,
         showUnselectedLabels: true,
-        selectedIconTheme: IconThemeData(
+        selectedIconTheme: const IconThemeData(
           color: ColorWheel.shojohiRed,
         ),
-      ).copyWith());
+      ));
   ColorScheme get _appColorScheme {
     return const ColorScheme(
       primary: ColorWheel.shojohiRed,
-      onPrimary: ColorWheel.doctorWhite,
+      onPrimary: Colors.white,
       secondary: ColorWheel.shojohiRed,
       onSecondary: Colors.black,
       background: ColorWheel.doctorWhite,
-      onBackground: ColorWheel.shojohiRed,
+      onBackground: Colors.black,
       surface: ColorWheel.doctorWhite,
+      onSurface: Colors.grey,
       error: Colors.red,
       onError: ColorWheel.doctorWhite,
-      onSurface: Colors.grey,
       brightness: Brightness.light,
     );
   }

@@ -11,7 +11,7 @@ class BagView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: context.colors.surface,
       body: SafeArea(
         child: Column(
           children: [
@@ -38,7 +38,7 @@ class BagView extends StatelessWidget {
                 flex: 12,
                 child: Container(
                   height: 50,
-                  color: context.colors.onPrimary,
+                  color: context.colors.background,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -53,7 +53,10 @@ class BagView extends StatelessWidget {
             right: 0,
             child: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.arrow_circle_right),
+              icon: Icon(
+                Icons.arrow_right,
+                color: context.colors.onSurface,
+              ),
               iconSize: 60,
             ),
           ),
@@ -96,20 +99,21 @@ class BagView extends StatelessWidget {
 
   Padding _buildTotal(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: context.paddingLow,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             LocaleKeys.bag_total,
             style: context.textTheme.headline6!.copyWith(
+              color: context.colors.onBackground,
               fontWeight: FontWeight.normal,
             ),
           ).tr(),
           Text(
             '1221\$',
             style: context.textTheme.headline6!.copyWith(
-              color: context.colors.onSecondary,
+              color: context.colors.onBackground,
             ),
           )
         ],

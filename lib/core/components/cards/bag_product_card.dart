@@ -7,6 +7,7 @@ class BagProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: context.colors.background,
       child: SizedBox(
         height: 130,
         child: Row(
@@ -33,7 +34,7 @@ class BagProductCard extends StatelessWidget {
     return Expanded(
       flex: 5,
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: context.paddingLow,
         child: Column(
           children: [
             _buildTitle(context),
@@ -57,7 +58,12 @@ class BagProductCard extends StatelessWidget {
           style: context.textTheme.bodyText2!
               .copyWith(fontWeight: FontWeight.bold),
         ),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+        IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.more_vert,
+              color: context.colors.onSurface,
+            ))
       ],
     );
   }
@@ -88,12 +94,8 @@ class BagProductCard extends StatelessWidget {
             children: [
               SizedBox(
                 height: 30,
-                child: FloatingActionButton(
-                  foregroundColor: context.colors.onSurface,
-                  backgroundColor: context.colors.onPrimary,
-                  onPressed: () {},
-                  child: const Icon(Icons.remove),
-                ),
+                child: _buildIconButton(context,
+                    icon: Icons.remove, voidCallback: () {}),
               ),
               Text(
                 '1',
@@ -102,22 +104,30 @@ class BagProductCard extends StatelessWidget {
               ),
               SizedBox(
                 height: 30,
-                child: FloatingActionButton(
-                  foregroundColor: context.colors.onSurface,
-                  backgroundColor: context.colors.onPrimary,
-                  onPressed: () {},
-                  child: const Icon(Icons.add),
-                ),
+                child: _buildIconButton(context,
+                    icon: Icons.add, voidCallback: () {}),
               )
             ],
           ),
           Text(
             '51\$',
-            style: context.textTheme.subtitle1!
-                .copyWith(fontWeight: FontWeight.bold),
+            style: context.textTheme.subtitle1!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: context.colors.onBackground,
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  FloatingActionButton _buildIconButton(BuildContext context,
+      {required VoidCallback voidCallback, required IconData icon}) {
+    return FloatingActionButton(
+      foregroundColor: context.colors.onSurface,
+      backgroundColor: context.colors.background,
+      onPressed: () {},
+      child: Icon(icon),
     );
   }
 }
