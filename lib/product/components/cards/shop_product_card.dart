@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/product_detail/view/product_detail_view.dart';
@@ -58,8 +59,7 @@ class ShopProductCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: context.colors.onPrimary,
                 ),
-                child: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+                child: const FavoriteButton(),
               ))
         ],
       ),

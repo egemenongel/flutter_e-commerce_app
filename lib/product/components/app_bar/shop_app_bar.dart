@@ -4,17 +4,17 @@ import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key})
+class ShopAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const ShopAppBar({Key? key})
       : preferredSize = const Size.fromHeight(kToolbarHeight * 2),
         super(key: key);
   @override
   final Size preferredSize;
   @override
-  CustomAppBarState createState() => CustomAppBarState();
+  ShopAppBarState createState() => ShopAppBarState();
 }
 
-class CustomAppBarState extends State<CustomAppBar> {
+class ShopAppBarState extends State<ShopAppBar> {
   int _selectedIndex = 0;
   void _onTap(int index) {
     setState(() {
@@ -25,6 +25,7 @@ class CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: context.colors.onPrimary,
       elevation: 5,
       child: Column(
         children: [
@@ -37,8 +38,8 @@ class CustomAppBarState extends State<CustomAppBar> {
 
   AppBar _buildHeader(BuildContext context) {
     return AppBar(
-      elevation: 0,
       backgroundColor: context.colors.onPrimary,
+      elevation: 0,
       iconTheme: IconThemeData(color: context.colors.primary),
       titleTextStyle:
           context.textTheme.headline5!.copyWith(color: context.colors.primary),

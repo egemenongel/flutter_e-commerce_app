@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/base/view/base_view.dart';
-import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
@@ -46,7 +46,7 @@ class SuccessView extends StatelessWidget {
             ),
             Padding(
               padding: context.paddingHighHorizontal,
-              child: MainElevatedButton(
+              child: PrimaryElevatedButton(
                 onPressed: () {
                   Navigator.popUntil(context, ModalRoute.withName(BaseView.id));
                 },

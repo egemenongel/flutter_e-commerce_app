@@ -14,6 +14,8 @@ abstract class  LocaleKeys {
   static const common_placeholder_name = 'common.placeholder.name';
   static const common_placeholder_mail = 'common.placeholder.mail';
   static const common_placeholder = 'common.placeholder';
+  static const common_messages_favorite = 'common.messages.favorite';
+  static const common_messages = 'common.messages';
   static const common = 'common';
   static const home_title = 'home.title';
   static const home_sale = 'home.sale';

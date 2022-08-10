@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_app/core/components/buttons/custom_dropdown_button.dart';
-import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
+import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
@@ -70,14 +71,13 @@ class ProductDetailView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const CustomDropdownButton(
+          const PrimaryDropdownButton(
             items: ['Small', 'Medium', 'Large'],
           ),
           Container(
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: Colors.white),
-            child: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            child: const FavoriteButton(),
           ),
         ],
       ),
@@ -183,7 +183,7 @@ class ProductDetailView extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         color: context.colors.onPrimary,
-        child: MainElevatedButton(
+        child: PrimaryElevatedButton(
             onPressed: () {},
             localizationKey: LocaleKeys.common_buttons_add_to_cart),
       ),

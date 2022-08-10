@@ -15,6 +15,9 @@
         "placeholder":{
             "name":"John Doe",
             "mail":"johndoe@gmail.com"
+        },
+        "messages":{
+            "favorite":"Added to favorites."
         }
     },
     "home":{

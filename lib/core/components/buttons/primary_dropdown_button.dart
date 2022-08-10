@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CustomDropdownButton extends StatefulWidget {
-  const CustomDropdownButton({
+class PrimaryDropdownButton extends StatefulWidget {
+  const PrimaryDropdownButton({
     Key? key,
     required this.items,
   }) : super(key: key);
   final List<String> items;
   @override
-  State<CustomDropdownButton> createState() => _CustomDropdownButtonState();
+  State<PrimaryDropdownButton> createState() => _PrimaryDropdownButtonState();
 }
 
-class _CustomDropdownButtonState extends State<CustomDropdownButton> {
+class _PrimaryDropdownButtonState extends State<PrimaryDropdownButton> {
   String? value;
   @override
   Widget build(BuildContext context) {

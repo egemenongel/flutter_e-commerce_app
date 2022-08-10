@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_app/core/components/buttons/main_elevated_button.dart';
-import 'package:ecommerce_app/core/components/cards/bag_product_card.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
+import 'package:ecommerce_app/product/components/cards/bag_product_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
@@ -123,7 +123,7 @@ class BagView extends StatelessWidget {
   Padding _buildCheckOutButton(BuildContext context) {
     return Padding(
       padding: context.paddingLow,
-      child: MainElevatedButton(
+      child: PrimaryElevatedButton(
           onPressed: () {
             Navigator.of(context).pushNamed(SuccessView.id);
           },

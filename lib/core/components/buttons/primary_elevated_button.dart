@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class MainElevatedButton extends StatelessWidget {
-  const MainElevatedButton({
+class PrimaryElevatedButton extends StatelessWidget {
+  const PrimaryElevatedButton({
     Key? key,
     required this.onPressed,
     required this.localizationKey,

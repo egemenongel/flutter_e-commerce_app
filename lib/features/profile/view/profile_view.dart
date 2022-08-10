@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/core/utils/theme/cubit/theme_cubit.dart';
-import 'package:ecommerce_app/product/components/profile_expansion_tile.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,34 +16,14 @@ class ProfileView extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 20,
+              ),
               _buildTitle(context),
               _buildProfileTile(context),
-              ...[
-                const ProfileExpansionTile(
-                  LocaleKeys.profile_orders,
-                ),
-                const ProfileExpansionTile(LocaleKeys.profile_addresses),
-                const ProfileExpansionTile(LocaleKeys.profile_methods),
-                const ProfileExpansionTile(LocaleKeys.profile_codes),
-                const ProfileExpansionTile(LocaleKeys.profile_reviews),
-                ProfileExpansionTile(
-                  LocaleKeys.profile_settings,
-                  widgets: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          LocaleKeys.profile_theme.tr().toTitleCase(),
-                          style: context.textTheme.bodyText2!
-                              .copyWith(color: context.colors.onBackground),
-                        ),
-                        _buildThemeButton(),
-                      ],
-                    ),
-                  ],
-                )
-              ],
+              ..._buildTiles(context),
             ],
           ),
         ),
@@ -51,10 +31,14 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Text _buildTitle(BuildContext context) {
-    return Text(
-      LocaleKeys.profile_title.tr(),
-      style: context.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
+  Padding _buildTitle(BuildContext context) {
+    return Padding(
+      padding: context.paddingLowHorizontal,
+      child: Text(
+        LocaleKeys.profile_title.tr().toTitleCase(),
+        style:
+            context.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
+      ),
     );
   }
 
@@ -75,6 +59,34 @@ class ProfileView extends StatelessWidget {
             .copyWith(color: context.colors.onBackground),
       ),
     );
+  }
+
+  List<Widget> _buildTiles(BuildContext context) {
+    return [
+      const PrimaryExpansionTile(
+        LocaleKeys.profile_orders,
+      ),
+      const PrimaryExpansionTile(LocaleKeys.profile_addresses),
+      const PrimaryExpansionTile(LocaleKeys.profile_methods),
+      const PrimaryExpansionTile(LocaleKeys.profile_codes),
+      const PrimaryExpansionTile(LocaleKeys.profile_reviews),
+      PrimaryExpansionTile(
+        LocaleKeys.profile_settings,
+        widgets: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                LocaleKeys.profile_theme.tr().toTitleCase(),
+                style: context.textTheme.bodyText2!
+                    .copyWith(color: context.colors.onBackground),
+              ),
+              _buildThemeButton(),
+            ],
+          ),
+        ],
+      )
+    ];
   }
 
   BlocBuilder<ThemeCubit, ThemeState> _buildThemeButton() {

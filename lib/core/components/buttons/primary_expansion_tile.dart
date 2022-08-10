@@ -3,8 +3,8 @@ import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:flutter/material.dart';
 
-class ProfileExpansionTile extends StatelessWidget {
-  const ProfileExpansionTile(
+class PrimaryExpansionTile extends StatelessWidget {
+  const PrimaryExpansionTile(
     this.translationKey, {
     Key? key,
     this.widgets,
