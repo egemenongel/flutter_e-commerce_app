@@ -25,7 +25,7 @@ class ShopAppBarState extends State<ShopAppBar> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.colors.onPrimary,
+      color: context.colors.background,
       elevation: 5,
       child: Column(
         children: [
@@ -38,7 +38,7 @@ class ShopAppBarState extends State<ShopAppBar> {
 
   AppBar _buildHeader(BuildContext context) {
     return AppBar(
-      backgroundColor: context.colors.onPrimary,
+      backgroundColor: context.colors.background,
       elevation: 0,
       iconTheme: IconThemeData(color: context.colors.primary),
       titleTextStyle:

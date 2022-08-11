@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/cards/primary_snackbar.dart';
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,9 @@ class _FavoriteButtonState extends State<FavoriteButton> {
           PrimarySnackbar.show(
               context, LocaleKeys.common_messages_favorite.tr().toUpperCase());
         },
-        icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border));
+        icon: Icon(
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: context.colors.primary,
+        ));
   }
 }

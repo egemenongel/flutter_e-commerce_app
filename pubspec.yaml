@@ -44,6 +44,7 @@ dependencies:
   #Localization
   easy_localization: ^3.0.1
   flutter_rating_bar: ^4.0.1
+  cached_network_image: ^3.2.1
   
 
 

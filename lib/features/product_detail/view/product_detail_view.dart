@@ -1,7 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
@@ -98,35 +98,12 @@ class ProductDetailView extends StatelessWidget {
               trailing: _buildPrice(context),
             ),
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox(height: 15),
           _buildRating(context),
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox(height: 15),
           _buildDescription(),
-          ExpansionTile(
-            title: Text(
-              LocaleKeys.product_detail_shipping_info.tr().toTitleCase(),
-            ),
-            children: [
-              ListTile(
-                title: Text(
-                  LocaleKeys.product_detail_shipping_info.tr().toTitleCase(),
-                ),
-              ),
-            ],
-          ),
-          ExpansionTile(
-            title: Text(LocaleKeys.product_detail_support.tr().toTitleCase()),
-            children: [
-              ListTile(
-                title:
-                    Text(LocaleKeys.product_detail_support.tr().toTitleCase()),
-              ),
-            ],
-          ),
+          const PrimaryExpansionTile(LocaleKeys.product_detail_shipping_info),
+          const PrimaryExpansionTile(LocaleKeys.product_detail_support),
         ],
       ),
     );

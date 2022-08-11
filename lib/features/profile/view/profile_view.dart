@@ -19,7 +19,7 @@ class ProfileView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 20,
+                height: kToolbarHeight,
               ),
               _buildTitle(context),
               _buildProfileTile(context),
@@ -36,8 +36,8 @@ class ProfileView extends StatelessWidget {
       padding: context.paddingLowHorizontal,
       child: Text(
         LocaleKeys.profile_title.tr().toTitleCase(),
-        style:
-            context.textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
+        style: context.textTheme.headline5!.copyWith(
+            fontWeight: FontWeight.bold, color: context.colors.onBackground),
       ),
     );
   }

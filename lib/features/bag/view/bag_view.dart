@@ -15,47 +15,58 @@ class BagView extends StatelessWidget {
     return Scaffold(
       backgroundColor: context.colors.surface,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildTitle(context),
-            _buildProducts(context),
-            _buildPromoButton(context),
-            _buildTotal(context),
-            _buildCheckOutButton(context)
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildTitle(context),
+              _buildProducts(context),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: _buildPromoButton(context),
+              ),
+              _buildTotal(context),
+              _buildCheckOutButton(context)
+            ],
+          ),
         ),
       ),
     );
   }
 
-  GestureDetector _buildPromoButton(BuildContext context) {
-    return GestureDetector(
-      child: Stack(
-        alignment: Alignment.center,
+  Widget _buildPromoButton(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+          const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+            topLeft: Radius.circular(10),
+            bottomLeft: Radius.circular(10),
+          )),
+        ),
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        backgroundColor: MaterialStateProperty.all(context.colors.background),
+        foregroundColor: MaterialStateProperty.all(context.colors.onBackground),
+      ),
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              const Spacer(),
-              Expanded(
-                flex: 12,
-                child: Container(
-                  height: 50,
-                  color: context.colors.background,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(LocaleKeys.bag_promo.tr().toCapitalized())
-                      ]),
+          Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  LocaleKeys.bag_promo.tr().toCapitalized(),
+                  style: context.textTheme.bodyText1!
+                      .copyWith(color: context.colors.onSurface),
                 ),
-              ),
-              const Spacer(),
-            ],
-          ),
-          Positioned(
-            right: 0,
+              )),
+          const Spacer(),
+          const Expanded(
             child: Icon(
-              Icons.arrow_right,
-              color: context.colors.onSurface,
+              Icons.arrow_circle_right,
               size: 60,
             ),
           ),

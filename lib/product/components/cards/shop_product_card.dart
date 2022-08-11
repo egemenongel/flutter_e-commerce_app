@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
@@ -32,8 +33,9 @@ class ShopProductCard extends StatelessWidget {
                   child: ClipRRect(
                     clipBehavior: Clip.antiAlias,
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    child: Image.network(
-                      productModel.image ?? ApplicationConstants.dummyImage,
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          productModel.image ?? ApplicationConstants.dummyImage,
                       fit: BoxFit.fill,
                     ),
                   ),
