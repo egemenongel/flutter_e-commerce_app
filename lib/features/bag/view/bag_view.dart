@@ -22,57 +22,31 @@ class BagView extends StatelessWidget {
             children: [
               _buildTitle(context),
               _buildProducts(context),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: _buildPromoButton(context),
+              BlocConsumer<BagBloc, BagState>(
+                listener: (context, state) {
+                  // TODO: implement listener
+                },
+                builder: (context, state) {
+                  if (state is BagInitial) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (state is BagLoaded) {
+                    return state.bag.products.isNotEmpty
+                        ? Column(
+                            children: [
+                              _buildPromoButton(context),
+                              _buildTotal(context),
+                              _buildCheckOutButton(context)
+                            ],
+                          )
+                        : _buildEmptyBag();
+                  }
+                  return const Text('Error!');
+                },
               ),
-              _buildTotal(context),
-              _buildCheckOutButton(context)
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildPromoButton(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all(
-          const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            topLeft: Radius.circular(15),
-            bottomLeft: Radius.circular(15),
-          )),
-        ),
-        padding: MaterialStateProperty.all(EdgeInsets.zero),
-        backgroundColor: MaterialStateProperty.all(context.colors.background),
-        foregroundColor: MaterialStateProperty.all(context.colors.onBackground),
-      ),
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-              flex: 5,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  LocaleKeys.bag_promo.tr().toCapitalized(),
-                  style: context.textTheme.bodyText1!
-                      .copyWith(color: context.colors.onSurface),
-                ),
-              )),
-          const Spacer(),
-          const Expanded(
-            child: Icon(
-              Icons.arrow_circle_right,
-              size: 60,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -120,6 +94,48 @@ class BagView extends StatelessWidget {
     );
   }
 
+  Widget _buildPromoButton(BuildContext context) {
+    return ElevatedButton(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all(
+          const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+            topLeft: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
+          )),
+        ),
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        backgroundColor: MaterialStateProperty.all(context.colors.background),
+        foregroundColor: MaterialStateProperty.all(context.colors.onBackground),
+      ),
+      onPressed: () {},
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  LocaleKeys.bag_promo.tr().toCapitalized(),
+                  style: context.textTheme.bodyText1!
+                      .copyWith(color: context.colors.onSurface),
+                ),
+              )),
+          const Spacer(),
+          const Expanded(
+            child: Icon(
+              Icons.arrow_circle_right,
+              size: 60,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding _buildTotal(BuildContext context) {
     return Padding(
       padding: context.paddingLow,
@@ -133,11 +149,24 @@ class BagView extends StatelessWidget {
               fontWeight: FontWeight.normal,
             ),
           ),
-          Text(
-            '1221\$',
-            style: context.textTheme.headline6!.copyWith(
-              color: context.colors.onBackground,
-            ),
+          BlocConsumer<BagBloc, BagState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              if (state is BagInitial) {
+                return const CircularProgressIndicator();
+              }
+              if (state is BagLoaded) {
+                return Text(
+                  '${state.totalPrice.toStringAsFixed(2)}\$',
+                  style: context.textTheme.headline6!.copyWith(
+                    color: context.colors.onBackground,
+                  ),
+                );
+              }
+              return const Text('Error!');
+            },
           )
         ],
       ),
@@ -153,5 +182,9 @@ class BagView extends StatelessWidget {
           },
           localizationKey: LocaleKeys.common_buttons_check_out),
     );
+  }
+
+  SizedBox _buildEmptyBag() {
+    return const SizedBox();
   }
 }
