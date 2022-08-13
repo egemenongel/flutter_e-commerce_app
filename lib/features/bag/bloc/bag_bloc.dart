@@ -16,6 +16,8 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   }
 
   final _items = <ProductModel>[];
+  double total = 0;
+
   void addItemToCart(ProductModel product) {
     if (isProductInCart(product)) {
       incrementProduct(product);
@@ -47,6 +49,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
 
   void decrementProduct(ProductModel product) {
     if (product.count > 1) {
+      product.count--;
     } else {
       _items.remove(product);
     }
@@ -72,6 +75,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
               products: [..._items],
             ),
             isProductUpdated: true,
+            totalPrice: state.totalPrice + event.product.price!.toDouble(),
           ),
         );
       } catch (_) {
@@ -100,6 +104,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
               products: [..._items],
             ),
             isProductUpdated: true,
+            totalPrice: state.totalPrice - event.product.price!.toDouble(),
           ),
         );
       } catch (_) {
@@ -115,7 +120,10 @@ class BagBloc extends Bloc<BagEvent, BagState> {
       try {
         addItemToCart(event.product);
         emit(
-          const BagLoaded(
+          BagLoaded(
+            bag: Bag(
+              products: [..._items],
+            ),
             isProductUpdated: false,
           ),
         );
@@ -125,6 +133,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
               products: [..._items],
             ),
             isProductUpdated: true,
+            totalPrice: state.totalPrice + event.product.price!.toDouble(),
           ),
         );
       } catch (_) {
@@ -143,6 +152,8 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             bag: Bag(
               products: [...state.bag.products]..remove(event.product),
             ),
+            totalPrice: state.totalPrice -
+                (event.product.count * event.product.price!.toDouble()),
           ),
         );
       } catch (_) {

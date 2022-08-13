@@ -5,7 +5,6 @@ import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/features/success/view/success_view.dart';
-import 'package:ecommerce_app/product/components/cards/bag_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,16 +21,69 @@ class BagView extends StatelessWidget {
             children: [
               _buildTitle(context),
               _buildProducts(context),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18.0),
-                child: _buildPromoButton(context),
-              ),
-              _buildTotal(context),
-              _buildCheckOutButton(context)
+              BlocConsumer<BagBloc, BagState>(
+                listener: (context, state) {
+                  // TODO: implement listener
+                },
+                builder: (context, state) {
+                  if (state is BagInitial) {
+                    return const CircularProgressIndicator();
+                  }
+                  if (state is BagLoaded) {
+                    return state.bag.products.isNotEmpty
+                        ? Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 18.0),
+                                child: _buildPromoButton(context),
+                              ),
+                              _buildTotal(context),
+                              _buildCheckOutButton(context)
+                            ],
+                          )
+                        : _buildEmptyBag();
+                  }
+                  return const Text('Error!');
+                },
+              )
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Padding _buildTitle(BuildContext context) {
+    return Padding(
+      padding: context.paddingNormal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            LocaleKeys.bag_title.tr().toTitleCase(),
+            style: context.textTheme.headline4!.copyWith(
+              color: context.colors.onSecondary,
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  BlocConsumer _buildProducts(BuildContext context) {
+    return BlocConsumer<BagBloc, BagState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        if (state is BagInitial) {
+          return const CircularProgressIndicator();
+        }
+        if (state is BagLoaded) {}
+        return const Text('Error!');
+      },
     );
   }
 
@@ -77,49 +129,6 @@ class BagView extends StatelessWidget {
     );
   }
 
-  Padding _buildTitle(BuildContext context) {
-    return Padding(
-      padding: context.paddingNormal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            LocaleKeys.bag_title.tr().toTitleCase(),
-            style: context.textTheme.headline4!.copyWith(
-              color: context.colors.onSecondary,
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  BlocConsumer _buildProducts(BuildContext context) {
-    return BlocConsumer<BagBloc, BagState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        if (state is BagInitial) {
-          return const CircularProgressIndicator();
-        }
-        if (state is BagLoaded) {
-          return SizedBox(
-            height: 450,
-            child: ListView(
-              padding: context.paddingLow,
-              children: state.bag.products
-                  .map((product) => BagProductCard(product: product))
-                  .toList(),
-            ),
-          );
-        }
-        return const Text('Error!');
-      },
-    );
-  }
-
   Padding _buildTotal(BuildContext context) {
     return Padding(
       padding: context.paddingLow,
@@ -133,11 +142,24 @@ class BagView extends StatelessWidget {
               fontWeight: FontWeight.normal,
             ),
           ),
-          Text(
-            '1221\$',
-            style: context.textTheme.headline6!.copyWith(
-              color: context.colors.onBackground,
-            ),
+          BlocConsumer<BagBloc, BagState>(
+            listener: (context, state) {
+              // TODO: implement listener
+            },
+            builder: (context, state) {
+              if (state is BagInitial) {
+                return const CircularProgressIndicator();
+              }
+              if (state is BagLoaded) {
+                return Text(
+                  '${state.totalPrice.toStringAsFixed(2)}\$',
+                  style: context.textTheme.headline6!.copyWith(
+                    color: context.colors.onBackground,
+                  ),
+                );
+              }
+              return const Text('Error!');
+            },
           )
         ],
       ),
@@ -153,5 +175,9 @@ class BagView extends StatelessWidget {
           },
           localizationKey: LocaleKeys.common_buttons_check_out),
     );
+  }
+
+  SizedBox _buildEmptyBag() {
+    return const SizedBox();
   }
 }
