@@ -16,7 +16,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   }
 
   final _items = <ProductModel>[];
-  double total = 0;
 
   void addItemToCart(ProductModel product) {
     if (isProductInCart(product)) {

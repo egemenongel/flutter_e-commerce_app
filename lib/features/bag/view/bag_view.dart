@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/features/success/view/success_view.dart';
+import 'package:ecommerce_app/product/components/cards/bag_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,11 +34,7 @@ class BagView extends StatelessWidget {
                     return state.bag.products.isNotEmpty
                         ? Column(
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 18.0),
-                                child: _buildPromoButton(context),
-                              ),
+                              _buildPromoButton(context),
                               _buildTotal(context),
                               _buildCheckOutButton(context)
                             ],
@@ -46,7 +43,7 @@ class BagView extends StatelessWidget {
                   }
                   return const Text('Error!');
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -81,7 +78,17 @@ class BagView extends StatelessWidget {
         if (state is BagInitial) {
           return const CircularProgressIndicator();
         }
-        if (state is BagLoaded) {}
+        if (state is BagLoaded) {
+          return SizedBox(
+            height: 450,
+            child: ListView(
+              padding: context.paddingLow,
+              children: state.bag.products
+                  .map((product) => BagProductCard(product: product))
+                  .toList(),
+            ),
+          );
+        }
         return const Text('Error!');
       },
     );
