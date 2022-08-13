@@ -94,44 +94,48 @@ class BagView extends StatelessWidget {
     );
   }
 
-  Widget _buildPromoButton(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all(
-          const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            topLeft: Radius.circular(15),
-            bottomLeft: Radius.circular(15),
-          )),
-        ),
-        padding: MaterialStateProperty.all(EdgeInsets.zero),
-        backgroundColor: MaterialStateProperty.all(context.colors.background),
-        foregroundColor: MaterialStateProperty.all(context.colors.onBackground),
-      ),
-      onPressed: () {},
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-              flex: 5,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  LocaleKeys.bag_promo.tr().toCapitalized(),
-                  style: context.textTheme.bodyText1!
-                      .copyWith(color: context.colors.onSurface),
-                ),
-              )),
-          const Spacer(),
-          const Expanded(
-            child: Icon(
-              Icons.arrow_circle_right,
-              size: 60,
-            ),
+  Padding _buildPromoButton(BuildContext context) {
+    return Padding(
+      padding: context.paddingLowHorizontal,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+            const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30),
+              bottomRight: Radius.circular(30),
+              topLeft: Radius.circular(15),
+              bottomLeft: Radius.circular(15),
+            )),
           ),
-        ],
+          padding: MaterialStateProperty.all(EdgeInsets.zero),
+          backgroundColor: MaterialStateProperty.all(context.colors.background),
+          foregroundColor:
+              MaterialStateProperty.all(context.colors.onBackground),
+        ),
+        onPressed: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+                flex: 5,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    LocaleKeys.bag_promo.tr().toCapitalized(),
+                    style: context.textTheme.bodyText1!
+                        .copyWith(color: context.colors.onSurface),
+                  ),
+                )),
+            const Spacer(),
+            const Expanded(
+              child: Icon(
+                Icons.arrow_circle_right,
+                size: 60,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

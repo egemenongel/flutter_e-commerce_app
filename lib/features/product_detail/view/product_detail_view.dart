@@ -1,22 +1,21 @@
 import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
+import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
-import 'package:ecommerce_app/core/utils/theme/color_wheel.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
+import 'package:ecommerce_app/product/components/product_rating_bar.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailView extends StatelessWidget {
-  const ProductDetailView({Key? key, required this.productModel})
-      : super(key: key);
+  const ProductDetailView({Key? key, required this.product}) : super(key: key);
   static const id = '/productDetail';
-  final ProductModel productModel;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +48,7 @@ class ProductDetailView extends StatelessWidget {
       backgroundColor: context.colors.onPrimary,
       foregroundColor: context.colors.onSecondary,
       title: Text(
-        productModel.title!,
+        product.title!,
       ),
       actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.share))],
     );
@@ -57,10 +56,11 @@ class ProductDetailView extends StatelessWidget {
 
   Container _buildImage(BuildContext context) {
     return Container(
+      color: context.colors.surface,
       padding: context.paddingLow,
       height: 500,
       child: Image.network(
-        productModel.image ?? ApplicationConstants.dummyImage,
+        product.image ?? ApplicationConstants.dummyImage,
         fit: BoxFit.fitWidth,
       ),
     );
@@ -78,7 +78,9 @@ class ProductDetailView extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: Colors.white),
-            child: const FavoriteButton(),
+            child: FavoriteButton(
+              iconColor: context.colors.primary,
+            ),
           ),
         ],
       ),
@@ -112,64 +114,45 @@ class ProductDetailView extends StatelessWidget {
 
   Text _buildTitle(BuildContext context) {
     return Text(
-      '${productModel.title!.split(' ')[0]} ${productModel.title!.split(' ')[1]} ${productModel.title!.split(' ')[2]}',
+      '${product.title!.split(' ')[0]} ${product.title!.split(' ')[1]} ${product.title!.split(' ')[2]}',
       style: context.textTheme.headline6,
     );
   }
 
   Text _buildCategory() {
     return Text(
-      productModel.category!.toTitleCase(),
+      product.category!.toTitleCase(),
     );
   }
 
   Text _buildPrice(BuildContext context) {
     return Text(
-      '\$${productModel.price}',
+      '\$${product.price}',
       style: context.textTheme.headline6,
     );
   }
 
-  Row _buildRating(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        RatingBarIndicator(
-          rating: productModel.rating!.rate!,
-          itemBuilder: (context, index) => const Icon(
-            Icons.star,
-            color: ColorWheel.mangoLatte,
-          ),
-          itemSize: 20.0,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Text(
-            '(${productModel.rating!.count!})',
-            style: context.textTheme.caption,
-          ),
-        )
-      ],
-    );
+  ProductRatingBar _buildRating(BuildContext context) {
+    return ProductRatingBar(product: product);
   }
 
-  Text _buildDescription() => Text('${productModel.description}');
+  Text _buildDescription() => Text('${product.description}');
 
   Widget _buildAddToCartButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
         padding: const EdgeInsets.all(20),
-        color: context.colors.onPrimary,
+        color: context.colors.surface,
         child: BlocConsumer<BagBloc, BagState>(
           listener: (context, state) {
             // TODO: implement listener
           },
           builder: (context, state) {
-            return TextButton(
+            return PrimaryElevatedButton(
               onPressed: () =>
-                  context.read<BagBloc>().add(BagProductAdded(productModel)),
-              child: const Text('ADD'),
+                  context.read<BagBloc>().add(BagProductAdded(product)),
+              localizationKey: LocaleKeys.common_buttons_add_to_cart,
             );
           },
         ),

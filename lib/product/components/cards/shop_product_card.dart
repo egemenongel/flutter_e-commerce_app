@@ -17,7 +17,7 @@ class ShopProductCard extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ProductDetailView(
-                    productModel: productModel,
+                    product: productModel,
                   ))),
       //  Navigator.pushNamed(context, ProductDetailView.id),
       child: Stack(
@@ -61,7 +61,9 @@ class ShopProductCard extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: context.colors.onPrimary,
                 ),
-                child: const FavoriteButton(),
+                child: FavoriteButton(
+                  iconColor: context.colors.primary,
+                ),
               ))
         ],
       ),
