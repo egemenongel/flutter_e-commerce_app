@@ -12,15 +12,18 @@ class ProductModel extends BaseModel {
   String? category;
   String? image;
   Rating? rating;
+  int count;
 
-  ProductModel(
-      {this.id,
-      this.title,
-      this.price,
-      this.description,
-      this.category,
-      this.image,
-      this.rating});
+  ProductModel({
+    this.id,
+    this.title,
+    this.price,
+    this.description,
+    this.category,
+    this.image,
+    this.rating,
+    this.count = 1,
+  });
 
   @override
   fromJson(Map<String, dynamic> json) {

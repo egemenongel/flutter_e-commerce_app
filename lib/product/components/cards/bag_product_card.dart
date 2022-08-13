@@ -1,32 +1,46 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
+import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BagProductCard extends StatelessWidget {
-  const BagProductCard({Key? key}) : super(key: key);
+  const BagProductCard({Key? key, required this.product}) : super(key: key);
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: context.colors.background,
-      child: SizedBox(
-        height: 130,
-        child: Row(
-          children: [
-            _buildProductImage(),
-            _buildProductDetails(context),
-          ],
+    return InkWell(
+      onLongPress: () =>
+          context.read<BagBloc>().add(BagProductRemoved(product)),
+      child: Card(
+        color: context.colors.surface,
+        child: SizedBox(
+          height: 130,
+          child: Row(
+            children: [
+              _buildProductImage(),
+              _buildProductDetails(context),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  ClipRRect _buildProductImage() {
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(
-        topLeft: Radius.circular(4),
-        bottomLeft: Radius.circular(4), //Same with the card
+  SizedBox _buildProductImage() {
+    return SizedBox(
+      width: 80,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(4),
+          bottomLeft: Radius.circular(4), //Same with the card
+        ),
+        child: CachedNetworkImage(
+            imageUrl: product.image ?? ApplicationConstants.dummyImage),
       ),
-      child: Image.asset('assets/images/image_1.png'),
     );
   }
 
@@ -53,17 +67,24 @@ class BagProductCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          'Product Title',
-          style: context.textTheme.bodyText2!
-              .copyWith(fontWeight: FontWeight.bold),
+        Expanded(
+          flex: 5,
+          child: Text(
+            product.title!,
+            style: context.textTheme.bodyText2!.copyWith(
+              fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ),
-        IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.more_vert,
-              color: context.colors.onSurface,
-            ))
+        Expanded(
+          child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.more_vert,
+                color: context.colors.onSurface,
+              )),
+        )
       ],
     );
   }
@@ -94,23 +115,31 @@ class BagProductCard extends StatelessWidget {
             children: [
               SizedBox(
                 height: 30,
-                child: _buildIconButton(context,
-                    icon: Icons.remove, voidCallback: () {}),
+                child: _buildIconButton(
+                  context,
+                  icon: Icons.remove,
+                  voidCallback: () => context
+                      .read<BagBloc>()
+                      .add(BagProductDecremented(product)),
+                ),
               ),
               Text(
-                '1',
+                '${product.count}',
                 style: context.textTheme.subtitle1!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 30,
                 child: _buildIconButton(context,
-                    icon: Icons.add, voidCallback: () {}),
+                    icon: Icons.add,
+                    voidCallback: () => context
+                        .read<BagBloc>()
+                        .add(BagProductIncremented(product))),
               )
             ],
           ),
           Text(
-            '51\$',
+            '${product.price}\$',
             style: context.textTheme.subtitle1!.copyWith(
               fontWeight: FontWeight.bold,
               color: context.colors.onBackground,
@@ -127,7 +156,7 @@ class BagProductCard extends StatelessWidget {
       heroTag: null,
       foregroundColor: context.colors.onSurface,
       backgroundColor: context.colors.background,
-      onPressed: () {},
+      onPressed: voidCallback,
       child: Icon(icon),
     );
   }

@@ -13,12 +13,12 @@ class BagInitial extends BagState {
 }
 
 class BagLoaded extends BagState {
-  const BagLoaded({this.bag = const Bag()});
-
+  const BagLoaded({this.bag = const Bag(), this.isProductUpdated = false});
+  final bool isProductUpdated;
   final Bag bag;
 
   @override
-  List<Object> get props => [bag];
+  List<Object> get props => [bag, isProductUpdated];
 }
 
 class BagError extends BagState {

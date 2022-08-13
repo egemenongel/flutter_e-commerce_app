@@ -27,3 +27,19 @@ class BagProductRemoved extends BagEvent {
   @override
   List<Object> get props => [product];
 }
+
+class BagProductIncremented extends BagEvent {
+  const BagProductIncremented(this.product);
+  final ProductModel product;
+
+  @override
+  List<Object> get props => [product];
+}
+
+class BagProductDecremented extends BagEvent {
+  const BagProductDecremented(this.product);
+  final ProductModel product;
+
+  @override
+  List<Object> get props => [product];
+}

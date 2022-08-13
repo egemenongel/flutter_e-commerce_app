@@ -30,7 +30,7 @@ class AppThemeLight extends AppTheme {
       onSecondary: Colors.black,
       background: ColorWheel.doctorWhite,
       onBackground: Colors.black,
-      surface: ColorWheel.doctorWhite,
+      surface: Colors.white,
       onSurface: Colors.grey,
       error: Colors.red,
       onError: ColorWheel.doctorWhite,

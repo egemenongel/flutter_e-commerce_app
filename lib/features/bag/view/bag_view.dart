@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/features/success/view/success_view.dart';
+import 'package:ecommerce_app/product/components/cards/bag_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -107,14 +108,10 @@ class BagView extends StatelessWidget {
           return SizedBox(
             height: 450,
             child: ListView(
-              padding: EdgeInsets.zero,
-              children: state.bag.products.map((e) => Text(e.title!)).toList(),
-              //  const [
-
-              // BagProductCard(),
-              // BagProductCard(),
-              // BagProductCard(),
-              // ],
+              padding: context.paddingLow,
+              children: state.bag.products
+                  .map((product) => BagProductCard(product: product))
+                  .toList(),
             ),
           );
         }
