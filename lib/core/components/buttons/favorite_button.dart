@@ -1,13 +1,18 @@
 import 'package:ecommerce_app/core/components/cards/primary_snackbar.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
+import 'package:ecommerce_app/product/models/product_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
 class FavoriteButton extends StatefulWidget {
   const FavoriteButton({
     Key? key,
     required this.iconColor,
+    required this.productModel,
   }) : super(key: key);
   final Color iconColor;
+  final ProductModel productModel;
   @override
   State<FavoriteButton> createState() => _FavoriteButtonState();
 }
@@ -22,6 +27,9 @@ class _FavoriteButtonState extends State<FavoriteButton> {
             isFavorite = !isFavorite;
           });
           PrimarySnackbar.show(context, LocaleKeys.common_messages_favorite);
+          context
+              .read<FavoritesBloc>()
+              .add(FavoritesProductAdded(widget.productModel));
         },
         icon: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border,

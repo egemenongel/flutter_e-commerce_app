@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
-import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
+import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
 import 'package:ecommerce_app/product/components/cards/favorite_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,21 +33,20 @@ class FavoritesView extends StatelessWidget {
                   ],
                 ),
               ),
-              BlocConsumer<BagBloc, BagState>(
+              BlocConsumer<FavoritesBloc, FavoritesState>(
                 listener: (context, state) {
                   //TODO: implement listener
                 },
                 builder: (context, state) {
-                  if (state is BagInitial) {
+                  if (state is FavoritesInitial) {
                     return const CircularProgressIndicator();
                   }
-                  if (state is BagLoaded) {
-                    return state.bag.products.isNotEmpty
-                        ? SizedBox(
-                            height: 450,
-                            child: ListView(
-                              padding: context.paddingLow,
-                              children: state.bag.products
+                  if (state is FavoritesLoaded) {
+                    return state.favoritesModel.products.isNotEmpty
+                        ? Padding(
+                            padding: context.paddingLow,
+                            child: Column(
+                              children: state.favoritesModel.products
                                   .map((product) =>
                                       FavoriteProductCard(product: product))
                                   .toList(),

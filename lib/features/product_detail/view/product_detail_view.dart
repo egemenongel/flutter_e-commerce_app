@@ -80,6 +80,7 @@ class ProductDetailView extends StatelessWidget {
                 shape: BoxShape.circle, color: Colors.white),
             child: FavoriteButton(
               iconColor: context.colors.primary,
+              productModel: product,
             ),
           ),
         ],

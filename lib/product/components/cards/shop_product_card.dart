@@ -7,9 +7,8 @@ import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 class ShopProductCard extends StatelessWidget {
-  const ShopProductCard({Key? key, required this.productModel})
-      : super(key: key);
-  final ProductModel productModel;
+  const ShopProductCard({Key? key, required this.product}) : super(key: key);
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -17,7 +16,7 @@ class ShopProductCard extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ProductDetailView(
-                    product: productModel,
+                    product: product,
                   ))),
       //  Navigator.pushNamed(context, ProductDetailView.id),
       child: Stack(
@@ -35,19 +34,19 @@ class ShopProductCard extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     child: CachedNetworkImage(
                       imageUrl:
-                          productModel.image ?? ApplicationConstants.dummyImage,
+                          product.image ?? ApplicationConstants.dummyImage,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
-                Text('${productModel.title}',
+                Text('${product.title}',
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     )),
-                Text('${productModel.category}'),
+                Text('${product.category}'),
                 Text(
-                  '${productModel.price}\$',
+                  '${product.price}\$',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 )
               ],
@@ -63,6 +62,7 @@ class ShopProductCard extends StatelessWidget {
                 ),
                 child: FavoriteButton(
                   iconColor: context.colors.primary,
+                  productModel: product,
                 ),
               ))
         ],

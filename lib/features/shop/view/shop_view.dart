@@ -42,7 +42,7 @@ class ShopView extends StatelessWidget {
                         child: const CircularProgressIndicator(),
                       )
                     : ShopProductCard(
-                        productModel: state.products![index],
+                        product: state.products![index],
                       );
               },
               itemCount: state.products?.length ?? 0),

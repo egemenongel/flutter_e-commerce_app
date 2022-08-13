@@ -14,11 +14,11 @@ class BagInitial extends BagState {
 
 class BagLoaded extends BagState {
   const BagLoaded(
-      {this.bag = const Bag(),
+      {this.bag = const BagModel(),
       this.isProductUpdated = false,
       this.totalPrice = 0});
   final bool isProductUpdated;
-  final Bag bag;
+  final BagModel bag;
   final double totalPrice;
 
   @override

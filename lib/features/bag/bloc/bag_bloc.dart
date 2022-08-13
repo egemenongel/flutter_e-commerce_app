@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/features/bag/model/bag.dart';
+import 'package:ecommerce_app/features/bag/model/bag_model.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +36,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     emit(BagInitial());
     try {
       final items = _items;
-      emit(BagLoaded(bag: Bag(products: [...items])));
+      emit(BagLoaded(bag: BagModel(products: [...items])));
     } catch (_) {
       emit(BagError());
     }
@@ -62,7 +62,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         incrementProduct(event.product);
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: false,
@@ -70,7 +70,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         );
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: true,
@@ -91,7 +91,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         decrementProduct(event.product);
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: false,
@@ -99,7 +99,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         );
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: true,
@@ -120,7 +120,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         addItemToCart(event.product);
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: false,
@@ -128,7 +128,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         );
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [..._items],
             ),
             isProductUpdated: true,
@@ -148,7 +148,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         removeItemFromCart(event.product);
         emit(
           BagLoaded(
-            bag: Bag(
+            bag: BagModel(
               products: [...state.bag.products]..remove(event.product),
             ),
             totalPrice: state.totalPrice -

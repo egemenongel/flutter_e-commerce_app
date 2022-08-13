@@ -181,9 +181,7 @@ class BagView extends StatelessWidget {
     return Padding(
       padding: context.paddingLow,
       child: PrimaryElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(SuccessView.id);
-          },
+          onPressed: () => Navigator.of(context).pushNamed(SuccessView.id),
           localizationKey: LocaleKeys.common_buttons_check_out),
     );
   }

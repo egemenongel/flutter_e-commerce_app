@@ -5,6 +5,7 @@ import 'package:ecommerce_app/core/utils/lang/language_manager.dart';
 import 'package:ecommerce_app/core/utils/navigation/navigation_manager.dart';
 import 'package:ecommerce_app/core/utils/theme/cubit/theme_cubit.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
+import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,8 +22,16 @@ void main() async {
         create: (context) => ThemeCubit(),
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
-            return BlocProvider(
-              create: (context) => BagBloc()..add(BagInitialized()),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => BagBloc()..add(BagInitialized()),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      FavoritesBloc()..add(FavoritesInitialized()),
+                ),
+              ],
               child: MyApp(
                 state: state,
               ),
