@@ -13,6 +13,10 @@ class NetworkManager {
   late final Dio dio;
 
   NetworkManager.init() {
+    assert(
+      ApiConstants.baseUrl.startsWith('https'),
+      'Invalid Url: Url does not start with https',
+    );
     dio = Dio(BaseOptions(
       baseUrl: ApiConstants.baseUrl,
       contentType: ApiConstants.json,

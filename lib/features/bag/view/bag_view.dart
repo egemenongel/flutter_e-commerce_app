@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
-import 'package:ecommerce_app/product/components/cards/bag_product_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
+import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/features/success/view/success_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BagView extends StatelessWidget {
   const BagView({Key? key}) : super(key: key);
@@ -41,8 +42,8 @@ class BagView extends StatelessWidget {
               borderRadius: BorderRadius.only(
             topRight: Radius.circular(30),
             bottomRight: Radius.circular(30),
-            topLeft: Radius.circular(10),
-            bottomLeft: Radius.circular(10),
+            topLeft: Radius.circular(15),
+            bottomLeft: Radius.circular(15),
           )),
         ),
         padding: MaterialStateProperty.all(EdgeInsets.zero),
@@ -93,17 +94,32 @@ class BagView extends StatelessWidget {
     );
   }
 
-  SizedBox _buildProducts(BuildContext context) {
-    return SizedBox(
-      height: 450,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: const [
-          BagProductCard(),
-          BagProductCard(),
-          BagProductCard(),
-        ],
-      ),
+  BlocConsumer _buildProducts(BuildContext context) {
+    return BlocConsumer<BagBloc, BagState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        if (state is BagInitial) {
+          return const CircularProgressIndicator();
+        }
+        if (state is BagLoaded) {
+          return SizedBox(
+            height: 450,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: state.bag.products.map((e) => Text(e.title!)).toList(),
+              //  const [
+
+              // BagProductCard(),
+              // BagProductCard(),
+              // BagProductCard(),
+              // ],
+            ),
+          );
+        }
+        return const Text('Error!');
+      },
     );
   }
 

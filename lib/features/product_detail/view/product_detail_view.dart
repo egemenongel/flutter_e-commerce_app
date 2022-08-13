@@ -1,14 +1,15 @@
 import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
-import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/core/utils/theme/color_wheel.dart';
+import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class ProductDetailView extends StatelessWidget {
@@ -154,15 +155,24 @@ class ProductDetailView extends StatelessWidget {
 
   Text _buildDescription() => Text('${productModel.description}');
 
-  Align _buildAddToCartButton(BuildContext context) {
+  Widget _buildAddToCartButton(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
         padding: const EdgeInsets.all(20),
         color: context.colors.onPrimary,
-        child: PrimaryElevatedButton(
-            onPressed: () {},
-            localizationKey: LocaleKeys.common_buttons_add_to_cart),
+        child: BlocConsumer<BagBloc, BagState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return TextButton(
+              onPressed: () =>
+                  context.read<BagBloc>().add(BagProductAdded(productModel)),
+              child: const Text('ADD'),
+            );
+          },
+        ),
       ),
     );
   }
