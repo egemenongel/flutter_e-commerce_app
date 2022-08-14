@@ -7,6 +7,7 @@ part of 'product_model.dart';
 // **************************************************************************
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
+      isFavorite: json['isFavorite'] as bool? ?? false,
       id: json['id'] as int?,
       title: json['title'] as String?,
       price: (json['price'] as num?)?.toDouble(),
@@ -16,6 +17,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       rating: json['rating'] == null
           ? null
           : Rating.fromJson(json['rating'] as Map<String, dynamic>),
+      count: json['count'] as int? ?? 1,
     );
 
 Rating _$RatingFromJson(Map<String, dynamic> json) => Rating(

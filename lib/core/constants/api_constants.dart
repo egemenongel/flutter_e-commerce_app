@@ -5,4 +5,5 @@ class ApiConstants {
   static const baseUrl = 'https://fakestoreapi.com';
 
   static const products = '/products';
+  static const profile = '/users/9';
 }

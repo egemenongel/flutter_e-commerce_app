@@ -138,7 +138,6 @@ class BagProductCard extends StatelessWidget {
       {required VoidCallback voidCallback, required IconData icon}) {
     return FloatingActionButton(
       heroTag: null,
-      foregroundColor: context.colors.background,
       backgroundColor: context.colors.secondary,
       onPressed: voidCallback,
       child: Icon(icon),

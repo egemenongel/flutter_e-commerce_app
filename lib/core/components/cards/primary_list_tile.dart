@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryListTile extends StatelessWidget {
@@ -16,6 +17,7 @@ class PrimaryListTile extends StatelessWidget {
       onTap: onTap ?? () {},
       onLongPress: onLongPress ?? () {},
       child: Card(
+        color: context.colors.primary,
         child: SizedBox(
           height: 130,
           child: childWidget,

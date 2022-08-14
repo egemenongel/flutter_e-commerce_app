@@ -6,6 +6,7 @@ import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/core/utils/theme/cubit/theme_cubit.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
+import 'package:ecommerce_app/features/profile/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,16 +15,19 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildTitle(context),
-              _buildProfileTile(context),
-              ..._buildTiles(context),
-            ],
+    return BlocProvider(
+      create: (context) => ProfileBloc()..add(const ProfileInitialized()),
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildTitle(context),
+                _buildProfileTile(context),
+                ..._buildTiles(context),
+              ],
+            ),
           ),
         ),
       ),
@@ -33,25 +37,39 @@ class ProfileView extends StatelessWidget {
   HeaderText _buildTitle(BuildContext context) =>
       HeaderText(translationKey: LocaleKeys.profile_title.tr().toTitleCase());
 
-  SizedBox _buildProfileTile(BuildContext context) {
-    return SizedBox(
-      child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: context.colors.onPrimary,
-          backgroundImage: const AssetImage(AssetPaths.profileImage),
-          radius: 30,
-        ),
-        title: Text(
-          LocaleKeys.common_placeholder_name.tr().toTitleCase(),
-          style: context.textTheme.headline6!
-              .copyWith(color: context.colors.onBackground),
-        ),
-        subtitle: Text(
-          LocaleKeys.common_placeholder_mail.tr().toLowerCase(),
-          style: context.textTheme.caption!
-              .copyWith(color: context.colors.onBackground),
-        ),
-      ),
+  BlocConsumer _buildProfileTile(BuildContext context) {
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        if (state is ProfileLoad) {
+          return SizedBox(
+            child: ListTile(
+              leading: CircleAvatar(
+                backgroundColor: context.colors.onPrimary,
+                backgroundImage: const AssetImage(AssetPaths.profileImage),
+                radius: 30,
+              ),
+              title: Text(
+                state.profileModel!.name!.firstname
+                    .toString(), // LocaleKeys.common_placeholder_name.tr().toTitleCase(),
+                style: context.textTheme.headline6!
+                    .copyWith(color: context.colors.onBackground),
+              ),
+              subtitle: Text(
+                state.profileModel!.email!,
+                style: context.textTheme.caption!
+                    .copyWith(color: context.colors.onBackground),
+              ),
+            ),
+          );
+        } else if (state is ProfileError) {
+          return const Text('ERROR');
+        }
+
+        return const CircularProgressIndicator();
+      },
     );
   }
 
@@ -60,7 +78,7 @@ class ProfileView extends StatelessWidget {
       const PrimaryExpansionTile(
         LocaleKeys.profile_orders,
       ),
-      const PrimaryExpansionTile(LocaleKeys.profile_addresses),
+      _buildAddressTile(),
       const PrimaryExpansionTile(LocaleKeys.profile_methods),
       const PrimaryExpansionTile(LocaleKeys.profile_codes),
       const PrimaryExpansionTile(LocaleKeys.profile_reviews),
@@ -81,6 +99,65 @@ class ProfileView extends StatelessWidget {
         ],
       )
     ];
+  }
+
+  BlocConsumer _buildAddressTile() {
+    return BlocConsumer<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        if (state is ProfileLoad) {
+          return PrimaryExpansionTile(
+            LocaleKeys.profile_addresses,
+            widgets: [
+              SizedBox(
+                height: 150,
+                child: Card(
+                  child: Padding(
+                    padding: context.paddingLow,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Ev Adresi',
+                                style: context.textTheme.headline6!.copyWith(),
+                              ),
+                              Text('${state.profileModel!.address!.city}'
+                                  .toTitleCase()),
+                              Text('${state.profileModel!.address!.street}'
+                                  .toTitleCase()),
+                              Text('${state.profileModel!.address!.number}'
+                                  .toTitleCase()),
+                              Text('${state.profileModel!.address!.zipcode}'
+                                  .toTitleCase()),
+                              Text(
+                                'Telefon: ${state.profileModel!.phone!}',
+                                style: context.textTheme.bodyText2!.copyWith(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+            ],
+          );
+        } else if (state is ProfileError) {
+          return const Text('Error');
+        }
+        return const CircularProgressIndicator();
+      },
+    );
   }
 
   BlocBuilder<ThemeCubit, ThemeState> _buildThemeButton() {

@@ -30,20 +30,20 @@ class FavoriteProductCard extends StatelessWidget {
 
   Column _buildProductTile(BuildContext context) {
     return Column(
-          children: [
-            PrimaryListTile(
-              childWidget: Row(
-                children: [
-                  _buildProductImage(),
-                  _buildProductDetails(context),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-          ],
-        );
+      children: [
+        PrimaryListTile(
+          childWidget: Row(
+            children: [
+              _buildProductImage(),
+              _buildProductDetails(context),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+      ],
+    );
   }
 
   TileImageCard _buildProductImage() {

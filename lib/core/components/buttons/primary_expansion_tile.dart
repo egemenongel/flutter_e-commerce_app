@@ -14,13 +14,15 @@ class PrimaryExpansionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      iconColor: context.colors.onBackground,
-      collapsedIconColor: context.colors.onBackground,
+      expandedAlignment: Alignment.topLeft,
+      iconColor: context.colors.onPrimary,
+      collapsedIconColor: context.colors.onSecondary,
+      textColor: context.colors.onPrimary,
+      collapsedTextColor: context.colors.onSecondary,
       childrenPadding: const EdgeInsets.symmetric(horizontal: 16),
       title: Text(
         translationKey.tr().toCapitalized(),
-        style: context.textTheme.headline6!
-            .copyWith(color: context.colors.onBackground),
+        style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
       ),
       children: widgets ??
           [
