@@ -14,6 +14,7 @@ class PrimaryExpansionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      tilePadding: EdgeInsets.zero,
       expandedAlignment: Alignment.topLeft,
       iconColor: context.colors.onPrimary,
       collapsedIconColor: context.colors.onSecondary,
@@ -22,7 +23,7 @@ class PrimaryExpansionTile extends StatelessWidget {
       childrenPadding: const EdgeInsets.symmetric(horizontal: 16),
       title: Text(
         translationKey.tr().toCapitalized(),
-        style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
       children: widgets ??
           [

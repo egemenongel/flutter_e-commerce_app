@@ -1,6 +1,8 @@
 import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
 import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
+import 'package:ecommerce_app/core/components/primary_snackbar.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
+import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
@@ -13,15 +15,16 @@ class BagProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PrimaryListTile(
-      childWidget: Row(
-        children: [
-          _buildProductImage(),
-          _buildProductDetails(context),
-        ],
-      ),
-      onLongPress: () =>
-          context.read<BagBloc>().add(BagProductRemoved(product)),
-    );
+        childWidget: Row(
+          children: [
+            _buildProductImage(),
+            _buildProductDetails(context),
+          ],
+        ),
+        onLongPress: () {
+          context.read<BagBloc>().add(BagProductRemoved(product));
+          PrimarySnackbar.show(context, LocaleKeys.common_messages_bag_remove);
+        });
   }
 
   TileImageCard _buildProductImage() {

@@ -21,15 +21,11 @@ class BagView extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: BlocConsumer<BagBloc, BagState>(
-                listener: (context, state) {
-                  // TODO: implement listener
-                },
+              child: BlocBuilder<BagBloc, BagState>(
                 builder: (context, state) {
                   if (state is BagInitial) {
                     return const CircularProgressIndicator();
-                  }
-                  if (state is BagLoaded) {
+                  } else if (state is BagLoad) {
                     return state.bag.products.isNotEmpty
                         ? Column(
                             children: [
@@ -71,10 +67,9 @@ class BagView extends StatelessWidget {
   }
 
   SizedBox _buildTitle(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
         height: kToolbarHeight * 1.5,
-        child: HeaderText(
-            translationKey: LocaleKeys.bag_title.tr().toTitleCase()));
+        child: HeaderText(translationKey: LocaleKeys.bag_title));
   }
 
   Padding _buildPromoButton(BuildContext context) {
@@ -137,15 +132,11 @@ class BagView extends StatelessWidget {
               fontWeight: FontWeight.normal,
             ),
           ),
-          BlocConsumer<BagBloc, BagState>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
+          BlocBuilder<BagBloc, BagState>(
             builder: (context, state) {
               if (state is BagInitial) {
                 return const CircularProgressIndicator();
-              }
-              if (state is BagLoaded) {
+              } else if (state is BagLoad) {
                 return Text(
                   '${state.totalPrice.toStringAsFixed(2)}\$',
                   style: context.textTheme.headline6!.copyWith(

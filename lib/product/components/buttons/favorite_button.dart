@@ -16,40 +16,44 @@ class FavoriteButton extends StatelessWidget {
   final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<FavoritesBloc, FavoritesState>(
-      listener: (context, state) {
-        //TODO: implement listener
+    return ElevatedButton(
+      onPressed: () {
+        if (productModel.isFavorite == false) {
+          context
+              .read<FavoritesBloc>()
+              .add(FavoritesProductAdded(productModel));
+          PrimarySnackbar.show(
+              context, LocaleKeys.common_messages_favorite_add);
+        } else {
+          context
+              .read<FavoritesBloc>()
+              .add(FavoritesProductRemoved(productModel));
+          PrimarySnackbar.show(
+              context, LocaleKeys.common_messages_favorite_remove);
+        }
       },
+      style: ElevatedButton.styleFrom(
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.all(10),
+        onPrimary: context.colors.secondary,
+      ),
+      child: _buildIcon(),
+    );
+  }
+
+  BlocBuilder<FavoritesBloc, FavoritesState> _buildIcon() {
+    return BlocBuilder<FavoritesBloc, FavoritesState>(
       builder: (context, state) {
-        if (state is FavoritesInitial) {
-          return const CircularProgressIndicator();
-        }
-        if (state is FavoritesLoaded) {
-          return ElevatedButton(
-            onPressed: () {
-              productModel.isFavorite == false
-                  ? context
-                      .read<FavoritesBloc>()
-                      .add(FavoritesProductAdded(productModel))
-                  : context
-                      .read<FavoritesBloc>()
-                      .add(FavoritesProductRemoved(productModel));
-              PrimarySnackbar.show(
-                  context, LocaleKeys.common_messages_favorite);
-            },
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              padding: const EdgeInsets.all(10),
-              onPrimary: context.colors.secondary,
-            ),
-            child: Icon(
-              productModel.isFavorite ? Icons.favorite : Icons.favorite_border,
-              size: 20,
-              color: context.colors.onPrimary,
-            ),
+        if (state is FavoritesLoad) {
+          return Icon(
+            productModel.isFavorite ? Icons.favorite : Icons.favorite_border,
+            size: 20,
+            color: context.colors.onPrimary,
           );
+        } else if (state is FavoritesError) {
+          return const Text('Error');
         }
-        return const Text('Error!');
+        return const CircularProgressIndicator();
       },
     );
   }

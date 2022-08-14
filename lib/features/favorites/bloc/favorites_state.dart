@@ -12,8 +12,8 @@ class FavoritesInitial extends FavoritesState {
   List<Object> get props => [];
 }
 
-class FavoritesLoaded extends FavoritesState {
-  const FavoritesLoaded({
+class FavoritesLoad extends FavoritesState {
+  const FavoritesLoad({
     this.favoritesModel = const FavoritesModel(),
     this.isProductUpdated = false,
   });

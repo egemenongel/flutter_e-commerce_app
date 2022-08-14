@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_app/core/base/view/base_view.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
@@ -17,7 +16,7 @@ class SuccessView extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          AssetPaths.profileImage,
+          AssetPaths.successImage,
           fit: BoxFit.fill,
         ),
         Column(
@@ -48,7 +47,7 @@ class SuccessView extends StatelessWidget {
               padding: context.paddingHighHorizontal,
               child: PrimaryElevatedButton(
                 onPressed: () {
-                  Navigator.popUntil(context, ModalRoute.withName(BaseView.id));
+                  Navigator.pop(context);
                 },
                 localizationKey: LocaleKeys.common_buttons_continue_shopping,
               ),

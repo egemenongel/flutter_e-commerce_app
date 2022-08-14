@@ -10,15 +10,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const ProfileInitial()) {
     on<ProfileInitialized>((_onInitialized));
   }
-  ProfileService? profileService;
   void _onInitialized(
       ProfileInitialized event, Emitter<ProfileState> emit) async {
-    profileService = ProfileService();
+    final ProfileService profileService = ProfileService();
+
     emit(const ProfileInitial());
     try {
-      emit(ProfileLoad(
-          isLoading: false,
-          profileModel: await profileService?.fetchProfile()));
+      emit(
+        ProfileLoad(
+            isLoading: false,
+            profileModel: await profileService.fetchProfile()),
+      );
     } catch (_) {
       emit(ProfileError());
     }

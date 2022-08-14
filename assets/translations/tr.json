@@ -17,7 +17,10 @@
             "mail":"johndoe@gmail.com"
         },
         "messages":{
-            "favorite":"Favorilere eklendi."
+            "favorite_add":"Favorilere eklendi.",
+            "favorite_remove":"Favorilerden cikarildi.",
+            "bag_add":"Cantaya eklendi.",
+            "bag_remove":"Cantadan cikarildi."
         }
     },
     "home":{
@@ -46,7 +49,8 @@
         "empty":"cantan bos :("
     },
     "favorites":{
-        "title":"favoriler"
+        "title":"favoriler",
+        "empty":"favori yok"
     },
     "profile":{
         "title":"profilim",
@@ -56,7 +60,8 @@
         "codes":"kodlarım",
         "reviews":"incelemelerim",
         "settings":"ayarlar",
-        "theme":"koyu tema"
+        "theme":"koyu tema",
+        "phone":"telefon:"
     },
     "product_detail":{
         "shipping_info":"gönderim bilgisi",

@@ -14,7 +14,10 @@ abstract class  LocaleKeys {
   static const common_placeholder_name = 'common.placeholder.name';
   static const common_placeholder_mail = 'common.placeholder.mail';
   static const common_placeholder = 'common.placeholder';
-  static const common_messages_favorite = 'common.messages.favorite';
+  static const common_messages_favorite_add = 'common.messages.favorite_add';
+  static const common_messages_favorite_remove = 'common.messages.favorite_remove';
+  static const common_messages_bag_add = 'common.messages.bag_add';
+  static const common_messages_bag_remove = 'common.messages.bag_remove';
   static const common_messages = 'common.messages';
   static const common = 'common';
   static const home_title = 'home.title';
@@ -39,6 +42,7 @@ abstract class  LocaleKeys {
   static const bag_empty = 'bag.empty';
   static const bag = 'bag';
   static const favorites_title = 'favorites.title';
+  static const favorites_empty = 'favorites.empty';
   static const favorites = 'favorites';
   static const profile_title = 'profile.title';
   static const profile_orders = 'profile.orders';

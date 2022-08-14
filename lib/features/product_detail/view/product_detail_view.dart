@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/components/primary_snackbar.dart';
 import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
@@ -20,6 +21,7 @@ class ProductDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colors.primary,
       appBar: _buildAppBar(context),
       body: Stack(
         children: [
@@ -56,6 +58,7 @@ class ProductDetailView extends StatelessWidget {
 
   Image _buildImage(BuildContext context) {
     return Image.network(
+      height: 300,
       product.image ?? ApplicationConstants.dummyImage,
       fit: BoxFit.fitWidth,
     );
@@ -135,18 +138,13 @@ class ProductDetailView extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         padding: const EdgeInsets.all(20),
-        color: context.colors.secondary,
-        child: BlocConsumer<BagBloc, BagState>(
-          listener: (context, state) {
-            // TODO: implement listener
+        color: context.colors.primary,
+        child: PrimaryElevatedButton(
+          onPressed: () {
+            context.read<BagBloc>().add(BagProductAdded(product));
+            PrimarySnackbar.show(context, LocaleKeys.common_messages_bag_add);
           },
-          builder: (context, state) {
-            return PrimaryElevatedButton(
-              onPressed: () =>
-                  context.read<BagBloc>().add(BagProductAdded(product)),
-              localizationKey: LocaleKeys.common_buttons_add_to_cart,
-            );
-          },
+          localizationKey: LocaleKeys.common_buttons_add_to_cart,
         ),
       ),
     );

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 class PrimarySnackbar {
   static show(BuildContext context, String translationKey) =>
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(translationKey.tr().toCapitalized())));
+      ScaffoldMessenger.of(context)
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+            SnackBar(content: Text(translationKey.tr().toCapitalized())));
 }

@@ -14,39 +14,43 @@ class ShopView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ShopCubit(ShopService()),
       child: Scaffold(
+        backgroundColor: context.colors.primary,
         appBar: const ShopAppBar(),
         body: _buildProducts(),
       ),
     );
   }
 
-  BlocConsumer _buildProducts() {
-    return BlocConsumer<ShopCubit, ShopState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+  BlocBuilder _buildProducts() {
+    return BlocBuilder<ShopCubit, ShopState>(
       builder: (context, state) {
-        return RefreshIndicator(
-          onRefresh: () async {
-            await context.read<ShopCubit>().fetchAllProducts();
-          },
-          child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-              ),
-              itemBuilder: (BuildContext context, int index) {
-                bool isLoading = state.isLoading ?? true;
-                return isLoading
-                    ? Padding(
-                        padding: context.paddingHigh,
-                        child: CircularProgressIndicator(
-                            color: context.colors.onPrimary),
-                      )
-                    : ShopProductCard(
-                        product: state.products![index],
-                      );
-              },
-              itemCount: state.products?.length ?? 0),
+        return SizedBox(
+          child: RefreshIndicator(
+            color: context.colors.onPrimary,
+            onRefresh: () async {
+              await context.read<ShopCubit>().fetchAllProducts();
+            },
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 0.83,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  bool isLoading = state.isLoading ?? true;
+                  return isLoading
+                      ? Container(
+                          padding: context.paddingHigh,
+                          height: 50,
+                          width: 50,
+                          child: CircularProgressIndicator(
+                              color: context.colors.onPrimary),
+                        )
+                      : ShopProductCard(
+                          product: state.products![index],
+                        );
+                },
+                itemCount: state.products?.length ?? 0),
+          ),
         );
       },
     );

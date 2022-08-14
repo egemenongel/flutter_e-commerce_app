@@ -20,15 +20,12 @@ class FavoritesView extends StatelessWidget {
           child: Column(
             children: [
               _buildTitle(context),
-              BlocConsumer<FavoritesBloc, FavoritesState>(
-                listener: (context, state) {
-                  //TODO: implement listener
-                },
+              BlocBuilder<FavoritesBloc, FavoritesState>(
                 builder: (context, state) {
                   if (state is FavoritesInitial) {
                     return const CircularProgressIndicator();
                   }
-                  if (state is FavoritesLoaded) {
+               else   if (state is FavoritesLoad) {
                     return state.favoritesModel.products.isNotEmpty
                         ? Padding(
                             padding: context.paddingLow,
@@ -39,7 +36,25 @@ class FavoritesView extends StatelessWidget {
                                   .toList(),
                             ),
                           )
-                        : const SizedBox();
+                        : SizedBox(
+                            height: 500,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.heart_broken,
+                                  size: 100,
+                                  color: context.colors.onPrimary,
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  LocaleKeys.favorites_empty.tr().toTitleCase(),
+                                  style: context.textTheme.headline4!.copyWith(
+                                      color: context.colors.onSecondary),
+                                )
+                              ],
+                            ),
+                          );
                   }
                   return const Text('Error!');
                 },
@@ -52,10 +67,9 @@ class FavoritesView extends StatelessWidget {
   }
 
   SizedBox _buildTitle(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: kToolbarHeight * 1.5,
-      child: HeaderText(
-          translationKey: LocaleKeys.favorites_title.tr().toTitleCase()),
+      child: HeaderText(translationKey: LocaleKeys.favorites_title),
     );
   }
 }

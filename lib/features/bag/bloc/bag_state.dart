@@ -12,8 +12,8 @@ class BagInitial extends BagState {
   List<Object> get props => [];
 }
 
-class BagLoaded extends BagState {
-  const BagLoaded(
+class BagLoad extends BagState {
+  const BagLoad(
       {this.bag = const BagModel(),
       this.isProductUpdated = false,
       this.totalPrice = 0});

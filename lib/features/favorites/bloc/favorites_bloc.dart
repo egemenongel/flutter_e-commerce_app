@@ -14,6 +14,45 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   }
   final _favProducts = <ProductModel>[];
 
+  void _onInitialized(
+      FavoritesInitialized event, Emitter<FavoritesState> emit) {
+    emit(FavoritesInitial());
+    try {
+      final items = _favProducts;
+      emit(FavoritesLoad(favoritesModel: FavoritesModel(products: [...items])));
+    } catch (_) {
+      emit(FavoritesError());
+    }
+  }
+
+  Future<void> _onProductAdded(
+      FavoritesProductAdded event, Emitter<FavoritesState> emit) async {
+    final state = this.state;
+    if (state is FavoritesLoad) {
+      try {
+        addItemToFavorites(event.product);
+        emit(
+          FavoritesLoad(
+            favoritesModel: FavoritesModel(
+              products: [..._favProducts],
+            ),
+            isProductUpdated: false,
+          ),
+        );
+        emit(
+          FavoritesLoad(
+            favoritesModel: FavoritesModel(
+              products: [..._favProducts],
+            ),
+            isProductUpdated: true,
+          ),
+        );
+      } catch (_) {
+        emit(FavoritesError());
+      }
+    }
+  }
+
   void addItemToFavorites(ProductModel product) {
     product.isFavorite = true;
     if (!isProductInFavorites(product)) {
@@ -26,59 +65,14 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
         .any((checkedProduct) => checkedProduct.title == product.title);
   }
 
-  void removeItemFromFavorites(ProductModel product) {
-    product.isFavorite = false;
-    _favProducts.remove(product);
-  }
-
-  void _onInitialized(
-      FavoritesInitialized event, Emitter<FavoritesState> emit) {
-    emit(FavoritesInitial());
-    try {
-      final items = _favProducts;
-      emit(FavoritesLoaded(
-          favoritesModel: FavoritesModel(products: [...items])));
-    } catch (_) {
-      emit(FavoritesError());
-    }
-  }
-
-  Future<void> _onProductAdded(
-      FavoritesProductAdded event, Emitter<FavoritesState> emit) async {
-    final state = this.state;
-    if (state is FavoritesLoaded) {
-      try {
-        addItemToFavorites(event.product);
-        emit(
-          FavoritesLoaded(
-            favoritesModel: FavoritesModel(
-              products: [..._favProducts],
-            ),
-            isProductUpdated: false,
-          ),
-        );
-        emit(
-          FavoritesLoaded(
-            favoritesModel: FavoritesModel(
-              products: [..._favProducts],
-            ),
-            isProductUpdated: true,
-          ),
-        );
-      } catch (_) {
-        emit(FavoritesError());
-      }
-    }
-  }
-
   Future<void> _onProductRemoved(
       FavoritesProductRemoved event, Emitter<FavoritesState> emit) async {
     final state = this.state;
-    if (state is FavoritesLoaded) {
+    if (state is FavoritesLoad) {
       try {
         removeItemFromFavorites(event.product);
         emit(
-          FavoritesLoaded(
+          FavoritesLoad(
             favoritesModel: FavoritesModel(
               products: [..._favProducts],
             ),
@@ -86,7 +80,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
           ),
         );
         emit(
-          FavoritesLoaded(
+          FavoritesLoad(
             favoritesModel: FavoritesModel(
               products: [..._favProducts],
             ),
@@ -97,5 +91,10 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
         emit(FavoritesError());
       }
     }
+  }
+
+  void removeItemFromFavorites(ProductModel product) {
+    product.isFavorite = false;
+    _favProducts.remove(product);
   }
 }

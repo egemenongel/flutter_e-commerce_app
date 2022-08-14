@@ -44,9 +44,10 @@ dependencies:
   equatable: ^2.0.3
   #Localization
   easy_localization: ^3.0.1
-  flutter_rating_bar: ^4.0.1
+  #Cache
   cached_network_image: ^3.2.1
-  
+  #UI
+  flutter_rating_bar: ^4.0.1
   
 
 

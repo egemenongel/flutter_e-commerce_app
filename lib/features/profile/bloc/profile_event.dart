@@ -13,11 +13,3 @@ class ProfileInitialized extends ProfileEvent {
   @override
   List<Object> get props => [isLoading];
 }
-
-class ProfileLoaded extends ProfileEvent {
-  const ProfileLoaded({this.isLoading = false, required this.profileModel});
-  final bool isLoading;
-  final ProfileModel profileModel;
-  @override
-  List<Object> get props => [isLoading, profileModel];
-}

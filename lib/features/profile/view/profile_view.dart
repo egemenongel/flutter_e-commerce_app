@@ -21,11 +21,18 @@ class ProfileView extends StatelessWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildTitle(context),
-                _buildProfileTile(context),
-                ..._buildTiles(context),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildProfileTile(context),
+                      ..._buildTiles(context),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -35,13 +42,10 @@ class ProfileView extends StatelessWidget {
   }
 
   HeaderText _buildTitle(BuildContext context) =>
-      HeaderText(translationKey: LocaleKeys.profile_title.tr().toTitleCase());
+      const HeaderText(translationKey: LocaleKeys.profile_title);
 
-  BlocConsumer _buildProfileTile(BuildContext context) {
-    return BlocConsumer<ProfileBloc, ProfileState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+  BlocBuilder _buildProfileTile(BuildContext context) {
+    return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoad) {
           return SizedBox(
@@ -52,8 +56,7 @@ class ProfileView extends StatelessWidget {
                 radius: 30,
               ),
               title: Text(
-                state.profileModel!.name!.firstname
-                    .toString(), // LocaleKeys.common_placeholder_name.tr().toTitleCase(),
+                '${state.profileModel!.name!.firstname.toString().toTitleCase()} ${state.profileModel!.name!.lastname.toString().toTitleCase()}', // LocaleKeys.common_placeholder_name.tr().toTitleCase(),
                 style: context.textTheme.headline6!
                     .copyWith(color: context.colors.onBackground),
               ),
@@ -101,11 +104,8 @@ class ProfileView extends StatelessWidget {
     ];
   }
 
-  BlocConsumer _buildAddressTile() {
-    return BlocConsumer<ProfileBloc, ProfileState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+  BlocBuilder _buildAddressTile() {
+    return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         if (state is ProfileLoad) {
           return PrimaryExpansionTile(
@@ -114,6 +114,7 @@ class ProfileView extends StatelessWidget {
               SizedBox(
                 height: 150,
                 child: Card(
+                  color: context.colors.primary,
                   child: Padding(
                     padding: context.paddingLow,
                     child: Row(
@@ -124,7 +125,7 @@ class ProfileView extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Ev Adresi',
+                                'Home',
                                 style: context.textTheme.headline6!.copyWith(),
                               ),
                               Text('${state.profileModel!.address!.city}'

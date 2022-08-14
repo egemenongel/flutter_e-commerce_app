@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/product_detail/view/product_detail_view.dart';
+import 'package:ecommerce_app/product/components/product_rating_bar.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 
@@ -20,11 +22,12 @@ class ShopProductCard extends StatelessWidget {
                   ))),
       //  Navigator.pushNamed(context, ProductDetailView.id),
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.centerLeft,
         children: [
-          Container(
+          Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 120,
@@ -39,21 +42,36 @@ class ShopProductCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text('${product.title}',
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    )),
-                Text('${product.category}'),
-                Text(
-                  '${product.price}\$',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                const SizedBox(height: 10),
+                ProductRatingBar(product: product),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Text('${product.title}',
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Text(
+                    '${product.category}'.toTitleCase(),
+                    style: context.textTheme.caption!.copyWith(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: Text(
+                    '${product.price}\$',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 )
               ],
             ),
           ),
           Align(
-              alignment: const Alignment(0.5, 0.35),
+              alignment: const Alignment(0.8, 0.83),
               child: Container(
                 height: 35,
                 decoration: BoxDecoration(

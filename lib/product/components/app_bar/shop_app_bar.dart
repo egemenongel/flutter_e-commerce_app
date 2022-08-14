@@ -45,7 +45,7 @@ class ShopAppBarState extends State<ShopAppBar> {
           .copyWith(color: context.colors.onPrimary),
       title: Center(
         child: Text(
-          LocaleKeys.shop_title.tr(),
+          LocaleKeys.shop_title.tr().toTitleCase(),
         ),
       ),
       actions: [

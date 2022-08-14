@@ -17,7 +17,10 @@
             "mail":"johndoe@gmail.com"
         },
         "messages":{
-            "favorite":"Added to favorites."
+            "favorite_add":"Added to favorites.",
+            "favorite_remove":"Removed from favorites.",
+            "bag_add":"Added to bag.",
+            "bag_remove":"Removed from bag."
         }
     },
     "home":{
@@ -46,7 +49,8 @@
         "empty":"your bag is empty :("
     },
     "favorites":{
-        "title":"favorites"
+        "title":"favorites",
+        "empty":"no favorites"
     },
     "profile":{
         "title":"my profile",
@@ -56,8 +60,9 @@
         "codes":"promotion codes",
         "reviews":"my reviews",
         "settings":"settings",
-        "theme":"dark theme"
-    },
+        "theme":"dark theme",
+        "phone":"phone:"
+        },
     "product_detail":{
         "shipping_info":"shipping info",
         "support":"support"

@@ -36,7 +36,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     emit(BagInitial());
     try {
       final items = _items;
-      emit(BagLoaded(bag: BagModel(products: [...items])));
+      emit(BagLoad(bag: BagModel(products: [...items])));
     } catch (_) {
       emit(BagError());
     }
@@ -57,11 +57,11 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   Future<void> _onProductIncremented(
       BagProductIncremented event, Emitter<BagState> emit) async {
     final state = this.state;
-    if (state is BagLoaded) {
+    if (state is BagLoad) {
       try {
         incrementProduct(event.product);
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -69,7 +69,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           ),
         );
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -86,11 +86,11 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   Future<void> _onProductDecremented(
       BagProductDecremented event, Emitter<BagState> emit) async {
     final state = this.state;
-    if (state is BagLoaded) {
+    if (state is BagLoad) {
       try {
         decrementProduct(event.product);
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -98,7 +98,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           ),
         );
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -115,11 +115,11 @@ class BagBloc extends Bloc<BagEvent, BagState> {
   Future<void> _onProductAdded(
       BagProductAdded event, Emitter<BagState> emit) async {
     final state = this.state;
-    if (state is BagLoaded) {
+    if (state is BagLoad) {
       try {
         addItemToCart(event.product);
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -127,7 +127,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
           ),
         );
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [..._items],
             ),
@@ -143,11 +143,11 @@ class BagBloc extends Bloc<BagEvent, BagState> {
 
   void _onProductRemoved(BagProductRemoved event, Emitter<BagState> emit) {
     final state = this.state;
-    if (state is BagLoaded) {
+    if (state is BagLoad) {
       try {
         removeItemFromBag(event.product);
         emit(
-          BagLoaded(
+          BagLoad(
             bag: BagModel(
               products: [...state.bag.products]..remove(event.product),
             ),
