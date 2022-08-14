@@ -25,7 +25,7 @@ class ShopAppBarState extends State<ShopAppBar> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: context.colors.background,
+      color: context.colors.secondary,
       elevation: 5,
       child: Column(
         children: [
@@ -38,11 +38,11 @@ class ShopAppBarState extends State<ShopAppBar> {
 
   AppBar _buildHeader(BuildContext context) {
     return AppBar(
-      backgroundColor: context.colors.background,
+      backgroundColor: context.colors.secondary,
       elevation: 0,
-      iconTheme: IconThemeData(color: context.colors.primary),
-      titleTextStyle:
-          context.textTheme.headline5!.copyWith(color: context.colors.primary),
+      iconTheme: IconThemeData(color: context.colors.onPrimary),
+      titleTextStyle: context.textTheme.headline5!
+          .copyWith(color: context.colors.onPrimary),
       title: Center(
         child: Text(
           LocaleKeys.shop_title.tr(),
@@ -58,7 +58,7 @@ class ShopAppBarState extends State<ShopAppBar> {
     );
   }
 
-  Row _buildActions() {
+  Container _buildActions() {
     List<String> actionsList = [
       LocaleKeys.shop_sort_types_popular.tr().toTitleCase(),
       LocaleKeys.shop_sort_types_newest.tr().toTitleCase(),
@@ -66,25 +66,37 @@ class ShopAppBarState extends State<ShopAppBar> {
       LocaleKeys.shop_sort_types_price_low.tr(),
       LocaleKeys.shop_sort_types_price_high.tr()
     ];
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        const SizedBox(
-          width: 10,
-        ),
-        const Icon(Icons.sort),
-        Text(actionsList[_selectedIndex]),
-        const Spacer(),
-        IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return _buildSheet(context, actionsList);
-                  });
-            },
-            icon: const Icon(Icons.list))
-      ],
+    return Container(
+      color: context.colors.secondary,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          const SizedBox(
+            width: 10,
+          ),
+          Icon(
+            Icons.sort,
+            color: context.colors.onBackground,
+          ),
+          Text(
+            actionsList[_selectedIndex],
+            style: TextStyle(
+              color: context.colors.onBackground,
+            ),
+          ),
+          const Spacer(),
+          IconButton(
+              color: context.colors.onBackground,
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return _buildSheet(context, actionsList);
+                    });
+              },
+              icon: const Icon(Icons.list))
+        ],
+      ),
     );
   }
 

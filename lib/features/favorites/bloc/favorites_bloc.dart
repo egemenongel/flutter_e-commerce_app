@@ -10,14 +10,14 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   FavoritesBloc() : super(FavoritesInitial()) {
     on<FavoritesInitialized>(_onInitialized);
     on<FavoritesProductAdded>(_onProductAdded);
+    on<FavoritesProductRemoved>(_onProductRemoved);
   }
   final _favProducts = <ProductModel>[];
 
   void addItemToFavorites(ProductModel product) {
+    product.isFavorite = true;
     if (!isProductInFavorites(product)) {
       _favProducts.add(product);
-    } else {
-      removeItemFromCart(product);
     }
   }
 
@@ -26,7 +26,10 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
         .any((checkedProduct) => checkedProduct.title == product.title);
   }
 
-  void removeItemFromCart(ProductModel product) => _favProducts.remove(product);
+  void removeItemFromFavorites(ProductModel product) {
+    product.isFavorite = false;
+    _favProducts.remove(product);
+  }
 
   void _onInitialized(
       FavoritesInitialized event, Emitter<FavoritesState> emit) {
@@ -51,6 +54,43 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
             favoritesModel: FavoritesModel(
               products: [..._favProducts],
             ),
+            isProductUpdated: false,
+          ),
+        );
+        emit(
+          FavoritesLoaded(
+            favoritesModel: FavoritesModel(
+              products: [..._favProducts],
+            ),
+            isProductUpdated: true,
+          ),
+        );
+      } catch (_) {
+        emit(FavoritesError());
+      }
+    }
+  }
+
+  Future<void> _onProductRemoved(
+      FavoritesProductRemoved event, Emitter<FavoritesState> emit) async {
+    final state = this.state;
+    if (state is FavoritesLoaded) {
+      try {
+        removeItemFromFavorites(event.product);
+        emit(
+          FavoritesLoaded(
+            favoritesModel: FavoritesModel(
+              products: [..._favProducts],
+            ),
+            isProductUpdated: false,
+          ),
+        );
+        emit(
+          FavoritesLoaded(
+            favoritesModel: FavoritesModel(
+              products: [..._favProducts],
+            ),
+            isProductUpdated: true,
           ),
         );
       } catch (_) {

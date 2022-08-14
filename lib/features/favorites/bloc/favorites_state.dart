@@ -13,14 +13,16 @@ class FavoritesInitial extends FavoritesState {
 }
 
 class FavoritesLoaded extends FavoritesState {
-  const FavoritesLoaded(
-      {this.favoritesModel = const FavoritesModel(), this.totalPrice = 0});
+  const FavoritesLoaded({
+    this.favoritesModel = const FavoritesModel(),
+    this.isProductUpdated = false,
+  });
 
   final FavoritesModel favoritesModel;
-  final double totalPrice;
+  final bool isProductUpdated;
 
   @override
-  List<Object> get props => [favoritesModel];
+  List<Object> get props => [favoritesModel, isProductUpdated];
 }
 
 class FavoritesError extends FavoritesState {

@@ -36,6 +36,7 @@ abstract class  LocaleKeys {
   static const bag_total = 'bag.total';
   static const bag_codes = 'bag.codes';
   static const bag_apply = 'bag.apply';
+  static const bag_empty = 'bag.empty';
   static const bag = 'bag';
   static const favorites_title = 'favorites.title';
   static const favorites = 'favorites';

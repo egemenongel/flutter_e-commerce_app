@@ -17,7 +17,7 @@ class SuccessView extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          AssetPaths.successImage,
+          AssetPaths.profileImage,
           fit: BoxFit.fill,
         ),
         Column(

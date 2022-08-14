@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/core/constants/application_constants.dart';
+import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
+import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
@@ -12,36 +12,20 @@ class BagProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return PrimaryListTile(
+      childWidget: Row(
+        children: [
+          _buildProductImage(),
+          _buildProductDetails(context),
+        ],
+      ),
       onLongPress: () =>
           context.read<BagBloc>().add(BagProductRemoved(product)),
-      child: Card(
-        color: context.colors.surface,
-        child: SizedBox(
-          height: 130,
-          child: Row(
-            children: [
-              _buildProductImage(),
-              _buildProductDetails(context),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
-  SizedBox _buildProductImage() {
-    return SizedBox(
-      width: 80,
-      child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(4),
-          bottomLeft: Radius.circular(4), //Same with the card
-        ),
-        child: CachedNetworkImage(
-            imageUrl: product.image ?? ApplicationConstants.dummyImage),
-      ),
-    );
+  TileImageCard _buildProductImage() {
+    return TileImageCard(image: product.image);
   }
 
   Expanded _buildProductDetails(BuildContext context) {
@@ -82,7 +66,7 @@ class BagProductCard extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.more_vert,
-                color: context.colors.onSurface,
+                color: context.colors.background,
               )),
         )
       ],
@@ -154,8 +138,8 @@ class BagProductCard extends StatelessWidget {
       {required VoidCallback voidCallback, required IconData icon}) {
     return FloatingActionButton(
       heroTag: null,
-      foregroundColor: context.colors.onSurface,
-      backgroundColor: context.colors.background,
+      foregroundColor: context.colors.background,
+      backgroundColor: context.colors.secondary,
       onPressed: voidCallback,
       child: Icon(icon),
     );

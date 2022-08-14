@@ -1,11 +1,14 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/components/buttons/circular_icon_button.dart';
-import 'package:ecommerce_app/core/constants/application_constants.dart';
+import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
+import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
+import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
+import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
 import 'package:ecommerce_app/product/components/product_rating_bar.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FavoriteProductCard extends StatelessWidget {
   const FavoriteProductCard({Key? key, required this.product})
@@ -15,56 +18,36 @@ class FavoriteProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 190,
+      height: 150,
       child: Stack(
         children: [
-          Column(
-            children: [
-              InkWell(
-                onTap: () {},
-                child: Card(
-                  color: context.colors.surface,
-                  child: SizedBox(
-                    height: 130,
-                    child: Row(
-                      children: [
-                        _buildProductImage(),
-                        _buildProductDetails(context),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-            ],
-          ),
-          Align(
-            alignment: const Alignment(1.05, 0.5),
-            child: CircularIconButton(
-              iconData: Icons.shopping_bag,
-              voidCallback: () {},
-              backgroundColor: context.colors.primary,
-            ),
-          ),
+          _buildProductTile(context),
+          _buildAddToCartButton(context),
         ],
       ),
     );
   }
 
-  SizedBox _buildProductImage() {
-    return SizedBox(
-      width: 80,
-      child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(4),
-          bottomLeft: Radius.circular(4), //Same with the card
-        ),
-        child: CachedNetworkImage(
-            imageUrl: product.image ?? ApplicationConstants.dummyImage),
-      ),
-    );
+  Column _buildProductTile(BuildContext context) {
+    return Column(
+          children: [
+            PrimaryListTile(
+              childWidget: Row(
+                children: [
+                  _buildProductImage(),
+                  _buildProductDetails(context),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        );
+  }
+
+  TileImageCard _buildProductImage() {
+    return TileImageCard(image: product.image);
   }
 
   Expanded _buildProductDetails(BuildContext context) {
@@ -116,10 +99,12 @@ class FavoriteProductCard extends StatelessWidget {
         ),
         Expanded(
           child: IconButton(
-              onPressed: () {},
+              onPressed: () => context
+                  .read<FavoritesBloc>()
+                  .add(FavoritesProductRemoved(product)),
               icon: Icon(
                 Icons.clear,
-                color: context.colors.onSurface,
+                color: context.colors.background,
               )),
         )
       ],
@@ -145,6 +130,18 @@ class FavoriteProductCard extends StatelessWidget {
           Expanded(flex: 4, child: ProductRatingBar(product: product)),
           const Spacer(),
         ],
+      ),
+    );
+  }
+
+  Align _buildAddToCartButton(BuildContext context) {
+    return Align(
+      alignment: const Alignment(1.05, 1.1),
+      child: CircularIconButton(
+        iconData: Icons.shopping_bag,
+        iconColor: Colors.white,
+        voidCallback: () =>
+            context.read<BagBloc>().add(BagProductAdded(product)),
       ),
     );
   }

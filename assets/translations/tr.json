@@ -42,7 +42,8 @@
         "promo":"promosyon kodunu gir",
         "total":"toplam tutar",
         "codes":"promosyon kodların",
-        "apply":"uygula"
+        "apply":"uygula",
+        "empty":"cantan bos :("
     },
     "favorites":{
         "title":"favoriler"

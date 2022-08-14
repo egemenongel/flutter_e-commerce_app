@@ -6,6 +6,7 @@ part 'product_model.g.dart';
 @JsonSerializable(createToJson: false)
 class ProductModel extends BaseModel {
   int? id;
+  bool isFavorite;
   String? title;
   double? price;
   String? description;
@@ -15,6 +16,7 @@ class ProductModel extends BaseModel {
   int count;
 
   ProductModel({
+    this.isFavorite = false,
     this.id,
     this.title,
     this.price,

@@ -25,17 +25,17 @@ class AppThemeDark extends AppTheme {
       ));
   ColorScheme get _appColorScheme {
     return const ColorScheme(
-      primary: ColorWheel.shojohiRed,
-      onPrimary: Colors.white,
-      secondary: ColorWheel.shojohiRed,
-      onSecondary: Colors.black,
+      primary: Color.fromARGB(255, 61, 75, 75),
+      onPrimary: ColorWheel.shojohiRed,
+      secondary: Color(0xff2C3333),
+      onSecondary: Colors.white,
       background: Color.fromARGB(255, 61, 75, 75),
       onBackground: Colors.white,
-      surface: Color(0xff2C3333),
-      onSurface: Colors.white,
+      surface: Colors.white,
+      onSurface: Colors.black,
       error: Colors.red,
-      onError: ColorWheel.doctorWhite,
-      brightness: Brightness.light,
+      onError: Colors.white,
+      brightness: Brightness.dark,
     );
   }
 }

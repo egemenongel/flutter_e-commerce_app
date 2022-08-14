@@ -24,16 +24,16 @@ class AppThemeLight extends AppTheme {
       ));
   ColorScheme get _appColorScheme {
     return const ColorScheme(
-      primary: ColorWheel.shojohiRed,
-      onPrimary: Colors.white,
-      secondary: ColorWheel.shojohiRed,
+      primary: Colors.white,
+      onPrimary: ColorWheel.shojohiRed,
+      secondary: ColorWheel.doctorWhite,
       onSecondary: Colors.black,
-      background: ColorWheel.doctorWhite,
+      background: Colors.grey,
       onBackground: Colors.black,
       surface: Colors.white,
-      onSurface: Colors.grey,
+      onSurface: Colors.black,
       error: Colors.red,
-      onError: ColorWheel.doctorWhite,
+      onError: Colors.white,
       brightness: Brightness.light,
     );
   }

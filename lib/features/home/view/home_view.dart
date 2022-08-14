@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
         Expanded(child: _buildTopBox(context)),
         Expanded(
           child: Container(
-            color: context.colors.onPrimary,
+            color: Colors.white,
             child: Row(
               children: [
                 Expanded(
@@ -46,7 +46,7 @@ PrimaryGridImage _buildTopBox(BuildContext context) {
             child: Text(
               LocaleKeys.home_title.tr().toTitleCase(),
               style: context.textTheme.headline4!.copyWith(
-                color: context.colors.onPrimary,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             )),
@@ -61,7 +61,7 @@ PrimaryGridImage _buildSaleBox(BuildContext context) {
         padding: const EdgeInsets.all(8.0),
         child: Text(LocaleKeys.home_sale.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
-              color: context.colors.primary,
+              color: context.colors.onPrimary,
               fontWeight: FontWeight.bold,
             )),
       ),
@@ -80,7 +80,7 @@ PrimaryGridImage _buildBlackBox(BuildContext context) {
           child: Text(
             LocaleKeys.home_black.tr().toTitleCase(),
             style: context.textTheme.headline4!.copyWith(
-              color: context.colors.onPrimary,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -99,7 +99,7 @@ PrimaryGridImage _buildHoodiesBox(BuildContext context) {
         child: Text(
           LocaleKeys.home_hoodies.tr().toTitleCase(),
           style: context.textTheme.headline4!.copyWith(
-            color: context.colors.onPrimary,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),

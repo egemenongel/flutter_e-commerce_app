@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
+import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
@@ -45,8 +45,8 @@ class ProductDetailView extends StatelessWidget {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: context.colors.onPrimary,
-      foregroundColor: context.colors.onSecondary,
+      backgroundColor: context.colors.secondary,
+      foregroundColor: context.colors.onBackground,
       title: Text(
         product.title!,
       ),
@@ -54,15 +54,10 @@ class ProductDetailView extends StatelessWidget {
     );
   }
 
-  Container _buildImage(BuildContext context) {
-    return Container(
-      color: context.colors.surface,
-      padding: context.paddingLow,
-      height: 500,
-      child: Image.network(
-        product.image ?? ApplicationConstants.dummyImage,
-        fit: BoxFit.fitWidth,
-      ),
+  Image _buildImage(BuildContext context) {
+    return Image.network(
+      product.image ?? ApplicationConstants.dummyImage,
+      fit: BoxFit.fitWidth,
     );
   }
 
@@ -75,13 +70,9 @@ class ProductDetailView extends StatelessWidget {
           const PrimaryDropdownButton(
             items: ['Small', 'Medium', 'Large'],
           ),
-          Container(
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Colors.white),
-            child: FavoriteButton(
-              iconColor: context.colors.primary,
-              productModel: product,
-            ),
+          FavoriteButton(
+            iconColor: context.colors.onPrimary,
+            productModel: product,
           ),
         ],
       ),
@@ -144,7 +135,7 @@ class ProductDetailView extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         padding: const EdgeInsets.all(20),
-        color: context.colors.surface,
+        color: context.colors.secondary,
         child: BlocConsumer<BagBloc, BagState>(
           listener: (context, state) {
             // TODO: implement listener

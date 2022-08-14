@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/core/components/buttons/favorite_button.dart';
+import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/product_detail/view/product_detail_view.dart';
@@ -58,10 +58,10 @@ class ShopProductCard extends StatelessWidget {
                 height: 35,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: context.colors.onPrimary,
+                  color: context.colors.primary,
                 ),
                 child: FavoriteButton(
-                  iconColor: context.colors.primary,
+                  iconColor: context.colors.secondary,
                   productModel: product,
                 ),
               ))

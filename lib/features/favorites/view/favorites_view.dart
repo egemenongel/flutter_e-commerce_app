@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/components/header_text.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
@@ -13,26 +14,12 @@ class FavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colors.surface,
+      backgroundColor: context.colors.secondary,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: context.paddingNormal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      LocaleKeys.favorites_title.tr().toTitleCase(),
-                      style: context.textTheme.headline4!.copyWith(
-                        color: context.colors.onSecondary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              _buildTitle(context),
               BlocConsumer<FavoritesBloc, FavoritesState>(
                 listener: (context, state) {
                   //TODO: implement listener
@@ -61,6 +48,14 @@ class FavoritesView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  SizedBox _buildTitle(BuildContext context) {
+    return SizedBox(
+      height: kToolbarHeight * 1.5,
+      child: HeaderText(
+          translationKey: LocaleKeys.favorites_title.tr().toTitleCase()),
     );
   }
 }

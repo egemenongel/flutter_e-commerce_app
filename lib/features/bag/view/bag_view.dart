@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
+import 'package:ecommerce_app/core/components/header_text.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
@@ -15,14 +16,12 @@ class BagView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colors.surface,
+      backgroundColor: context.colors.secondary,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              _buildTitle(context),
-              _buildProducts(context),
-              BlocConsumer<BagBloc, BagState>(
+        child: Column(
+          children: [
+            Expanded(
+              child: BlocConsumer<BagBloc, BagState>(
                 listener: (context, state) {
                   // TODO: implement listener
                 },
@@ -34,64 +33,48 @@ class BagView extends StatelessWidget {
                     return state.bag.products.isNotEmpty
                         ? Column(
                             children: [
+                              Expanded(
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  children: [
+                                    _buildTitle(context),
+                                    ...state.bag.products
+                                        .map((product) => Padding(
+                                              padding: context.paddingLow,
+                                              child: BagProductCard(
+                                                  product: product),
+                                            ))
+                                        .toList(),
+                                  ],
+                                ),
+                              ),
                               _buildPromoButton(context),
                               _buildTotal(context),
                               _buildCheckOutButton(context)
                             ],
                           )
-                        : _buildEmptyBag();
+                        : Column(
+                            children: [
+                              _buildTitle(context),
+                              _buildEmptyBag(context),
+                            ],
+                          );
                   }
                   return const Text('Error!');
                 },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  Padding _buildTitle(BuildContext context) {
-    return Padding(
-      padding: context.paddingNormal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            LocaleKeys.bag_title.tr().toTitleCase(),
-            style: context.textTheme.headline4!.copyWith(
-              color: context.colors.onSecondary,
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  BlocConsumer _buildProducts(BuildContext context) {
-    return BlocConsumer<BagBloc, BagState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        if (state is BagInitial) {
-          return const CircularProgressIndicator();
-        }
-        if (state is BagLoaded) {
-          return SizedBox(
-            height: 450,
-            child: ListView(
-              padding: context.paddingLow,
-              children: state.bag.products
-                  .map((product) => BagProductCard(product: product))
-                  .toList(),
-            ),
-          );
-        }
-        return const Text('Error!');
-      },
-    );
+  SizedBox _buildTitle(BuildContext context) {
+    return SizedBox(
+        height: kToolbarHeight * 1.5,
+        child: HeaderText(
+            translationKey: LocaleKeys.bag_title.tr().toTitleCase()));
   }
 
   Padding _buildPromoButton(BuildContext context) {
@@ -109,7 +92,7 @@ class BagView extends StatelessWidget {
             )),
           ),
           padding: MaterialStateProperty.all(EdgeInsets.zero),
-          backgroundColor: MaterialStateProperty.all(context.colors.background),
+          backgroundColor: MaterialStateProperty.all(context.colors.primary),
           foregroundColor:
               MaterialStateProperty.all(context.colors.onBackground),
         ),
@@ -124,7 +107,7 @@ class BagView extends StatelessWidget {
                   child: Text(
                     LocaleKeys.bag_promo.tr().toCapitalized(),
                     style: context.textTheme.bodyText1!
-                        .copyWith(color: context.colors.onSurface),
+                        .copyWith(color: context.colors.onSecondary),
                   ),
                 )),
             const Spacer(),
@@ -140,8 +123,9 @@ class BagView extends StatelessWidget {
     );
   }
 
-  Padding _buildTotal(BuildContext context) {
-    return Padding(
+  Container _buildTotal(BuildContext context) {
+    return Container(
+      height: 50,
       padding: context.paddingLow,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,7 +170,25 @@ class BagView extends StatelessWidget {
     );
   }
 
-  SizedBox _buildEmptyBag() {
-    return const SizedBox();
+  Widget _buildEmptyBag(BuildContext context) {
+    return SizedBox(
+      height: 500,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.shopping_bag,
+            size: 100,
+            color: context.colors.onPrimary,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            LocaleKeys.bag_empty.tr().toTitleCase(),
+            style: context.textTheme.headline4!
+                .copyWith(color: context.colors.onSecondary),
+          )
+        ],
+      ),
+    );
   }
 }

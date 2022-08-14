@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class CircularIconButton extends StatelessWidget {
@@ -5,21 +6,24 @@ class CircularIconButton extends StatelessWidget {
       {Key? key,
       required this.iconData,
       required this.voidCallback,
-      required this.backgroundColor})
+      this.iconColor,
+      this.backgroundColor})
       : super(key: key);
   final IconData iconData;
   final VoidCallback voidCallback;
-  final Color backgroundColor;
+  final Color? backgroundColor;
+  final Color? iconColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: voidCallback,
       style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           padding: const EdgeInsets.all(10),
-          primary: backgroundColor),
+          primary: backgroundColor ?? context.colors.onPrimary),
       child: Icon(
         iconData,
+        color: iconColor ?? context.colors.primary,
         size: 20,
       ),
     );

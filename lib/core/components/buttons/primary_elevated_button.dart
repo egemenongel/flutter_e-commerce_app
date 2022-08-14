@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryElevatedButton extends StatelessWidget {
@@ -18,6 +19,10 @@ class PrimaryElevatedButton extends StatelessWidget {
           child: ElevatedButton(
               onPressed: onPressed,
               style: ButtonStyle(
+                foregroundColor:
+                    MaterialStateProperty.all(context.colors.primary),
+                backgroundColor:
+                    MaterialStateProperty.all(context.colors.onPrimary),
                 shape: MaterialStateProperty.all(const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(30)))),
                 padding: MaterialStateProperty.all(const EdgeInsets.all(20)),

@@ -42,7 +42,8 @@
         "promo":"enter your promo code",
         "total":"total amount",
         "codes":"your promo codes",
-        "apply":"apply"
+        "apply":"apply",
+        "empty":"your bag is empty :("
     },
     "favorites":{
         "title":"favorites"

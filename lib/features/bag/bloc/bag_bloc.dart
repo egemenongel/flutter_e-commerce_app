@@ -30,7 +30,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         .any((checkedProduct) => checkedProduct.title == product.title);
   }
 
-  void removeItemFromCart(ProductModel product) => _items.remove(product);
+  void removeItemFromBag(ProductModel product) => _items.remove(product);
 
   void _onInitialized(BagInitialized event, Emitter<BagState> emit) {
     emit(BagInitial());
@@ -145,7 +145,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     final state = this.state;
     if (state is BagLoaded) {
       try {
-        removeItemFromCart(event.product);
+        removeItemFromBag(event.product);
         emit(
           BagLoaded(
             bag: BagModel(

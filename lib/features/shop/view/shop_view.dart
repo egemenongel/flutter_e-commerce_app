@@ -39,7 +39,8 @@ class ShopView extends StatelessWidget {
                 return isLoading
                     ? Padding(
                         padding: context.paddingHigh,
-                        child: const CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                            color: context.colors.onPrimary),
                       )
                     : ShopProductCard(
                         product: state.products![index],
