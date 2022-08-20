@@ -39,7 +39,6 @@ dependencies:
   json_serializable: ^6.3.1
   dio: ^4.0.6
   #State Management
-  bloc: ^8.1.0
   flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   #Localization
@@ -48,6 +47,7 @@ dependencies:
   cached_network_image: ^3.2.1
   #UI
   flutter_rating_bar: ^4.0.1
+  lottie: ^1.4.1
   
 
 
@@ -78,6 +78,7 @@ flutter:
   assets:
     - assets/images/
     - assets/translations/
+    - assets/animations/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

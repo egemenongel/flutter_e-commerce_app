@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 
 class BaseView extends StatefulWidget {
   const BaseView({Key? key}) : super(key: key);
-  static const id = '/';
+  static const id = '/home';
   @override
   State<BaseView> createState() => _BaseViewState();
 }

@@ -39,9 +39,10 @@ class ShopView extends StatelessWidget {
                   bool isLoading = state.isLoading ?? true;
                   return isLoading
                       ? Container(
-                          padding: context.paddingHigh,
-                          height: 50,
-                          width: 50,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.3 * 8,
+                            vertical: 80,
+                          ),
                           child: CircularProgressIndicator(
                               color: context.colors.onPrimary),
                         )
