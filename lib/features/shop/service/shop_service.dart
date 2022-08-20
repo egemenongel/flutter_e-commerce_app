@@ -6,18 +6,13 @@ import 'package:ecommerce_app/product/models/product_model.dart';
 class ShopService {
   final NetworkManager? _networkManager = NetworkManager.instance;
 
-  Future<List<ProductModel>?> fetchAllProducts() async {
+  Future<List<ProductModel>?> fetchAllProducts(
+      {Map<String, dynamic>? params}) async {
     return await _networkManager!.request(
-        method: ReqTypes.get,
-        path: ApiConstants.products,
-        model: ProductModel());
-  }
-
-  Future<List<ProductModel>?> sortProducts(Map<String, dynamic> params) async {
-    return await _networkManager!.request(
-        method: ReqTypes.get,
-        path: ApiConstants.products,
-        queryParameters: params,
-        model: ProductModel());
+      method: ReqTypes.get,
+      path: ApiConstants.products,
+      model: ProductModel(),
+      queryParameters: params,
+    );
   }
 }

@@ -17,17 +17,6 @@ class ShopAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class ShopAppBarState extends State<ShopAppBar> {
-  int _selectedIndex = 0;
-  Map<String, dynamic> queryParameters = {};
-  void _onTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    _selectedIndex == 1 || _selectedIndex == 3
-        ? queryParameters.addAll({'sort': 'desc'})
-        : queryParameters.addAll({'sort': 'asc'});
-  }
-
   final List<String> actionsList = [
     LocaleKeys.shop_sort_types_popular.tr().toTitleCase(),
     LocaleKeys.shop_sort_types_newest.tr().toTitleCase(),
@@ -84,11 +73,15 @@ class ShopAppBarState extends State<ShopAppBar> {
             Icons.sort,
             color: context.colors.onBackground,
           ),
-          Text(
-            actionsList[_selectedIndex],
-            style: TextStyle(
-              color: context.colors.onBackground,
-            ),
+          BlocBuilder<ShopCubit, ShopState>(
+            builder: (context, state) {
+              return Text(
+                actionsList[state.selectedIndex ?? 0],
+                style: TextStyle(
+                  color: context.colors.onBackground,
+                ),
+              );
+            },
           ),
           const Spacer(),
           IconButton(
@@ -132,6 +125,7 @@ class ShopAppBarState extends State<ShopAppBar> {
   }
 
   Expanded _buildSortTypes(List<String> actionsList, BuildContext context) {
+    final int selectedIndex = context.read<ShopCubit>().selectedIndex;
     return Expanded(
       child: GestureDetector(
         child: Column(
@@ -144,10 +138,13 @@ class ShopAppBarState extends State<ShopAppBar> {
                         child: GestureDetector(
                           onTap: () async {
                             Navigator.pop(context);
-                            _onTap(actionsList.indexOf(action));
-                            await context
+                            context
                                 .read<ShopCubit>()
-                                .sortProducts(queryParameters);
+                                .selectIndex(actionsList.indexOf(action));
+                            await context.read<ShopCubit>().fetchAllProducts(
+                                  params:
+                                      context.read<ShopCubit>().queryParameters,
+                                );
                           },
                           child: Row(
                             children: [
@@ -156,7 +153,7 @@ class ShopAppBarState extends State<ShopAppBar> {
                                   padding: context.paddingLowHorizontal,
                                   height: 50,
                                   color: actionsList.indexOf(action) ==
-                                          _selectedIndex
+                                          selectedIndex
                                       ? Colors.red
                                       : Colors.white,
                                   child: Align(
@@ -166,7 +163,7 @@ class ShopAppBarState extends State<ShopAppBar> {
                                       style:
                                           context.textTheme.bodyText1!.copyWith(
                                         color: actionsList.indexOf(action) ==
-                                                _selectedIndex
+                                                selectedIndex
                                             ? Colors.white
                                             : Colors.black,
                                       ),

@@ -24,7 +24,9 @@ class ShopView extends StatelessWidget {
           child: RefreshIndicator(
             color: context.colors.onPrimary,
             onRefresh: () async {
-              await context.read<ShopCubit>().fetchAllProducts();
+              await context.read<ShopCubit>().fetchAllProducts(
+                    params: context.read<ShopCubit>().queryParameters,
+                  );
             },
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

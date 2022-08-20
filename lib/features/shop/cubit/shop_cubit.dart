@@ -11,25 +11,23 @@ class ShopCubit extends Cubit<ShopState> {
     fetchAllProducts();
   }
   final ShopService shopService;
-
-  Future<void> fetchAllProducts() async {
+  int selectedIndex = 0;
+  final Map<String, dynamic> queryParameters = {};
+  Future<void> fetchAllProducts({Map<String, dynamic>? params}) async {
     _changeLoading();
-    final response = await shopService.fetchAllProducts();
-
+    final response = await shopService.fetchAllProducts(params: params);
     emit(state.copyWith(
       products: response ?? [],
     ));
     _changeLoading();
   }
 
-  Future<void> sortProducts(Map<String, dynamic> params) async {
-    _changeLoading();
-    final response = await shopService.sortProducts(params);
-
-    emit(state.copyWith(
-      products: response ?? [],
-    ));
-    _changeLoading();
+  void selectIndex(int index) {
+    selectedIndex = index;
+    selectedIndex == 1 || selectedIndex == 3
+        ? queryParameters.addAll({'sort': 'desc'})
+        : queryParameters.addAll({'sort': 'asc'});
+    emit(state.copyWith(selectedIndex: selectedIndex));
   }
 
   void _changeLoading() {
