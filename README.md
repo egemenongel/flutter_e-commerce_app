@@ -21,19 +21,19 @@ E-commerce project created using Flutter and Fake Store Api.
 ## Screenshots
 
 ### Home Screen
-<img src="https://user-images.githubusercontent.com/73590188/184549715-f0d12b2b-2f61-4427-9a91-23a43682ef77.png" alt="Home Screen" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/184550662-254e1203-e6aa-4be0-b7e5-c4b8e7fe30d2.png" alt="Home Screen" width="400"/>
 
 ### Shop Screen
-<img src="https://user-images.githubusercontent.com/73590188/184549718-54daa4a8-3e00-4a46-b720-b6f12193cbd6.png" alt="Shop Screen" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/184550664-c950bdfc-533f-4405-ad49-63270520b297.png" alt="Shop Screen" width="400"/>
 
 ### Bag Screen
-<img src="https://user-images.githubusercontent.com/73590188/184549721-102d5f19-44bb-4cc0-b30a-56ef8bc140c6.png" alt="Bag Screen" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/184550660-7eca12d3-4fc5-4a8f-ac58-1d73d9b7611a.png" alt="Bag Screen" width="400"/>
 
 ### Favorites Screen
-<img src="https://user-images.githubusercontent.com/73590188/184549720-6125c827-0269-4d31-9d3a-30723923b1ac.png" alt="Favorites Screen" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/184550659-7f768fe7-9787-4b1c-bae1-8fb2eba7470a.png" alt="Favorites Screen" width="400"/>
 
 ### Profile Screen
-<img src="https://user-images.githubusercontent.com/73590188/184549722-169f05ba-85eb-47fb-b1d8-fec687543671.png" alt="Profile Screen" width="400"/>
+<img src="https://user-images.githubusercontent.com/73590188/184550661-86105e81-df2a-4cc8-b73e-666f41399d19.png" alt="Profile Screen" width="400"/>
 
 ## Design 
 
