@@ -13,13 +13,9 @@ class NetworkManager {
   late final Dio dio;
 
   NetworkManager.init() {
-    assert(
-      ApiConstants.baseUrl.startsWith('https'),
-      'Invalid Url: Url does not start with https',
-    );
     dio = Dio(BaseOptions(
       baseUrl: ApiConstants.baseUrl,
-      contentType: ApiConstants.json,
+      // contentType: ApiConstants.json,
     ));
   }
   Future request<T extends BaseModel>({
@@ -39,7 +35,7 @@ class NetworkManager {
           data: body,
           queryParameters: queryParameters,
           options: Options(
-            contentType: isFile ? ApiConstants.file : ApiConstants.json,
+            contentType: 'application/x-www-form-urlencoded',
             method: method.name,
           ));
 
@@ -56,9 +52,9 @@ class NetworkManager {
         log('$path ${method.name} FAILED | Status Code: ${response.statusCode} | Status Message: ${response.statusMessage}');
         return null;
       }
-    } on DioError {
-      // log('$path ${method.name} DIO ERROR | Error : $dioError');
-      // return _showError(dioError);
+    } on DioError catch (dioError) {
+      log('$path ${method.name} DIO ERROR | Error : $dioError');
+      return null;
     } catch (error) {
       log('$path ${method.name} ERROR | Error : $error');
       return null;

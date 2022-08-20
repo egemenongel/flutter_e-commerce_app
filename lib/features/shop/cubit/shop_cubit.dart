@@ -22,6 +22,16 @@ class ShopCubit extends Cubit<ShopState> {
     _changeLoading();
   }
 
+  Future<void> sortProducts(Map<String, dynamic> params) async {
+    _changeLoading();
+    final response = await shopService.sortProducts(params);
+
+    emit(state.copyWith(
+      products: response ?? [],
+    ));
+    _changeLoading();
+  }
+
   void _changeLoading() {
     emit(state.copyWith(isLoading: !(state.isLoading ?? false)));
   }

@@ -12,4 +12,12 @@ class ShopService {
         path: ApiConstants.products,
         model: ProductModel());
   }
+
+  Future<List<ProductModel>?> sortProducts(Map<String, dynamic> params) async {
+    return await _networkManager!.request(
+        method: ReqTypes.get,
+        path: ApiConstants.products,
+        queryParameters: params,
+        model: ProductModel());
+  }
 }

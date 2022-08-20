@@ -67,7 +67,8 @@ class ProfileView extends StatelessWidget {
               ),
             ),
           );
-        } else if (state is ProfileError) {
+        }
+        if (state is ProfileError) {
           return const Text('ERROR');
         }
 

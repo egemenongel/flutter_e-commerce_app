@@ -6,6 +6,8 @@ import 'package:ecommerce_app/core/utils/navigation/navigation_manager.dart';
 import 'package:ecommerce_app/core/utils/theme/cubit/theme_cubit.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
+import 'package:ecommerce_app/features/shop/cubit/shop_cubit.dart';
+import 'package:ecommerce_app/features/shop/service/shop_service.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +32,9 @@ void main() async {
                 BlocProvider(
                   create: (context) =>
                       FavoritesBloc()..add(FavoritesInitialized()),
+                ),
+                BlocProvider(
+                  create: (context) => ShopCubit(ShopService()),
                 ),
               ],
               child: MyApp(

@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/features/shop/cubit/shop_cubit.dart';
-import 'package:ecommerce_app/features/shop/service/shop_service.dart';
 import 'package:ecommerce_app/product/components/app_bar/shop_app_bar.dart';
 import 'package:ecommerce_app/product/components/cards/shop_product_card.dart';
 import 'package:flutter/material.dart';
@@ -11,13 +10,10 @@ class ShopView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ShopCubit(ShopService()),
-      child: Scaffold(
-        backgroundColor: context.colors.primary,
-        appBar: const ShopAppBar(),
-        body: _buildProducts(),
-      ),
+    return Scaffold(
+      backgroundColor: context.colors.primary,
+      appBar: const ShopAppBar(),
+      body: _buildProducts(),
     );
   }
 
