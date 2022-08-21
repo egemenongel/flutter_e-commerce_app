@@ -6,6 +6,7 @@
   * [Description](#description)
   * [Screenshots](#screenshots)
   * [Design](#design)
+  * [License](#license)
 
 ## Description
 
@@ -31,3 +32,6 @@ https://user-images.githubusercontent.com/73590188/185792214-f04870fa-daaa-488d-
 
 Designed by [Hitesh Tapaniya](https://www.figma.com/@hiteshbenzatine). [E-Commerce App Design](https://www.figma.com/community/file/1131440097475381135), used under [CC VV](https://creativecommons.org/licenses/by/4.0/).
 
+## License
+
+This project is licensed under the MIT license. See [LICENSE](https://github.com/egemenongel/flutter_e-commerce_app/blob/master/LICENSE) for more information.
