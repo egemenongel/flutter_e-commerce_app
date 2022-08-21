@@ -93,7 +93,18 @@ class ShopAppBarState extends State<ShopAppBar> {
                       return _buildSheet(context, actionsList);
                     });
               },
-              icon: const Icon(Icons.list))
+              icon: const Icon(Icons.swap_vert)),
+          const Spacer(),
+          IconButton(
+              color: context.colors.onBackground,
+              onPressed: () => context.read<ShopCubit>().changeView(),
+              icon: BlocBuilder<ShopCubit, ShopState>(
+                builder: (context, state) {
+                  return Icon(
+                    state.isGrid ? Icons.list : Icons.grid_view_rounded,
+                  );
+                },
+              ))
         ],
       ),
     );

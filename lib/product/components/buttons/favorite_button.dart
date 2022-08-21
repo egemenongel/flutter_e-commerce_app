@@ -47,6 +47,7 @@ class FavoriteButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(10),
+        minimumSize: Size.zero,
         onPrimary: context.colors.secondary,
       ),
       child: _buildIcon(),

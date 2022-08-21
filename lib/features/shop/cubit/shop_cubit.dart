@@ -12,6 +12,7 @@ class ShopCubit extends Cubit<ShopState> {
   }
   final ShopService shopService;
   int selectedIndex = 0;
+  bool isGrid = true;
   final Map<String, dynamic> queryParameters = {};
   Future<void> fetchAllProducts({Map<String, dynamic>? params}) async {
     _changeLoading();
@@ -28,6 +29,11 @@ class ShopCubit extends Cubit<ShopState> {
         ? queryParameters.addAll({'sort': 'desc'})
         : queryParameters.addAll({'sort': 'asc'});
     emit(state.copyWith(selectedIndex: selectedIndex));
+  }
+
+  void changeView() {
+    isGrid = !isGrid;
+    emit(state.copyWith(isGrid: isGrid));
   }
 
   void _changeLoading() {

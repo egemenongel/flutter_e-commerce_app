@@ -2,7 +2,6 @@ import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
 import 'package:ecommerce_app/core/constants/network_paths.dart';
 import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
-import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
 import 'package:ecommerce_app/core/constants/application_constants.dart';
@@ -67,22 +66,19 @@ class ProductDetailView extends StatelessWidget {
     );
   }
 
-  Padding _buildActions(BuildContext context) {
-    return Padding(
-      padding: context.paddingLow,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(),
-          // const PrimaryDropdownButton(
-          //   items: ['Small', 'Medium', 'Large'],
-          // ),
-          FavoriteButton(
-            iconColor: context.colors.onPrimary,
-            productModel: product,
-          ),
-        ],
-      ),
+  Row _buildActions(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(),
+        // const PrimaryDropdownButton(
+        //   items: ['Small', 'Medium', 'Large'],
+        // ),
+        FavoriteButton(
+          iconColor: context.colors.onPrimary,
+          productModel: product,
+        ),
+      ],
     );
   }
 
