@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
-import 'package:ecommerce_app/core/constants/network_paths.dart';
+import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
@@ -29,8 +29,7 @@ class FavoriteButton extends StatelessWidget {
             context,
             CustomMessage(
                 translationKey: LocaleKeys.common_messages_favorite_add,
-                icon: Lottie.network(NetworkPaths.favoriteAnimation,
-                    repeat: false)),
+                icon: Lottie.asset(AssetPaths.animFavorite, repeat: false)),
           );
         } else {
           context
@@ -40,8 +39,7 @@ class FavoriteButton extends StatelessWidget {
               context,
               CustomMessage(
                   translationKey: LocaleKeys.common_messages_favorite_remove,
-                  icon: Lottie.network(NetworkPaths.removeAnimation,
-                      repeat: false)));
+                  icon: Lottie.asset(AssetPaths.animRemoved, repeat: false)));
         }
       },
       style: ElevatedButton.styleFrom(

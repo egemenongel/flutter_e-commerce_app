@@ -2,7 +2,7 @@ import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
 import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
 import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
-import 'package:ecommerce_app/core/constants/network_paths.dart';
+import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
@@ -30,7 +30,7 @@ class BagProductCard extends StatelessWidget {
               context,
               CustomMessage(
                 translationKey: LocaleKeys.common_messages_bag_remove,
-                icon: Lottie.network(NetworkPaths.removeAnimation),
+                icon: Lottie.asset(AssetPaths.animRemoved),
               ));
         });
   }

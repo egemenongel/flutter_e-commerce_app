@@ -74,12 +74,8 @@ class ShopProductGridCard extends StatelessWidget {
             ),
             Align(
                 alignment: const Alignment(0.8, 0.83),
-                child: Container(
+                child: SizedBox(
                   height: 35,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: context.colors.primary,
-                  ),
                   child: FavoriteButton(
                     iconColor: context.colors.secondary,
                     productModel: product,

@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
-import 'package:ecommerce_app/core/constants/network_paths.dart';
+import 'package:ecommerce_app/core/constants/asset_paths.dart';
 import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_expansion_tile.dart';
@@ -109,7 +109,7 @@ class ProductDetailView extends StatelessWidget {
 
   Text _buildTitle(BuildContext context) {
     return Text(
-      '${product.title!.split(' ')[0]} ${product.title!.split(' ')[1]} ${product.title!.split(' ')[2]} ${product.title!.split(' ')[3]}',
+      '${product.title!.split(' ')[0]} ${product.title!.split(' ')[1]} ${product.title!.split(' ')[2]} ',
       style: context.textTheme.headline6,
     );
   }
@@ -147,8 +147,7 @@ class ProductDetailView extends StatelessWidget {
                 context,
                 CustomMessage(
                     translationKey: LocaleKeys.common_messages_bag_add,
-                    icon: Lottie.network(NetworkPaths.addAnimation,
-                        repeat: false)));
+                    icon: Lottie.asset(AssetPaths.animDone, repeat: false)));
           },
           localizationKey: LocaleKeys.common_buttons_add_to_cart,
         ),

@@ -1,6 +1,8 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
-abstract class  LocaleKeys {
+// ignore_for_file: constant_identifier_names
+
+abstract class LocaleKeys {
   static const common_nav_home = 'common.nav.home';
   static const common_nav_shop = 'common.nav.shop';
   static const common_nav_bag = 'common.nav.bag';
@@ -9,13 +11,15 @@ abstract class  LocaleKeys {
   static const common_nav = 'common.nav';
   static const common_buttons_add_to_cart = 'common.buttons.add_to_cart';
   static const common_buttons_check_out = 'common.buttons.check_out';
-  static const common_buttons_continue_shopping = 'common.buttons.continue_shopping';
+  static const common_buttons_continue_shopping =
+      'common.buttons.continue_shopping';
   static const common_buttons = 'common.buttons';
   static const common_placeholder_name = 'common.placeholder.name';
   static const common_placeholder_mail = 'common.placeholder.mail';
   static const common_placeholder = 'common.placeholder';
   static const common_messages_favorite_add = 'common.messages.favorite_add';
-  static const common_messages_favorite_remove = 'common.messages.favorite_remove';
+  static const common_messages_favorite_remove =
+      'common.messages.favorite_remove';
   static const common_messages_bag_add = 'common.messages.bag_add';
   static const common_messages_bag_remove = 'common.messages.bag_remove';
   static const common_messages = 'common.messages';
@@ -59,5 +63,4 @@ abstract class  LocaleKeys {
   static const success_title = 'success.title';
   static const success_thanks = 'success.thanks';
   static const success = 'success';
-
 }
