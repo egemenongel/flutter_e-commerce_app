@@ -3,6 +3,7 @@ import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/shop/cubit/shop_cubit.dart';
+import 'package:ecommerce_app/product/components/search_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,7 +53,9 @@ class ShopAppBarState extends State<ShopAppBar> {
       ),
       actions: [
         IconButton(
-            onPressed: () {},
+            onPressed: () => showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(hintText: 'Search')),
             icon: const Icon(
               Icons.search,
             ))

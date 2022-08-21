@@ -14,7 +14,7 @@ class ShopProductListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 210,
+      height: 190,
       child: Column(
         children: [
           InkWell(
@@ -91,7 +91,7 @@ class ShopProductListCard extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 30,
           ),
         ],
       ),

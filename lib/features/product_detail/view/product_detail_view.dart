@@ -109,7 +109,7 @@ class ProductDetailView extends StatelessWidget {
 
   Text _buildTitle(BuildContext context) {
     return Text(
-      '${product.title!.split(' ')[0]} ${product.title!.split(' ')[1]} ${product.title!.split(' ')[2]}',
+      '${product.title!.split(' ')[0]} ${product.title!.split(' ')[1]} ${product.title!.split(' ')[2]} ${product.title!.split(' ')[3]}',
       style: context.textTheme.headline6,
     );
   }
