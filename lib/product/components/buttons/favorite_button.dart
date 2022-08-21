@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
@@ -23,13 +24,18 @@ class FavoriteButton extends StatelessWidget {
               .read<FavoritesBloc>()
               .add(FavoritesProductAdded(productModel));
           PrimarySnackbar.show(
-              context, LocaleKeys.common_messages_favorite_add);
+            context,
+            const CustomMessage(
+                translationKey: LocaleKeys.common_messages_favorite_add),
+          );
         } else {
           context
               .read<FavoritesBloc>()
               .add(FavoritesProductRemoved(productModel));
           PrimarySnackbar.show(
-              context, LocaleKeys.common_messages_favorite_remove);
+              context,
+              const CustomMessage(
+                  translationKey: LocaleKeys.common_messages_favorite_remove));
         }
       },
       style: ElevatedButton.styleFrom(

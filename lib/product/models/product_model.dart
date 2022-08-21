@@ -5,14 +5,14 @@ part 'product_model.g.dart';
 
 @JsonSerializable(createToJson: false)
 class ProductModel extends BaseModel {
-  int? id;
+  final int? id;
+  final String? title;
+  final double? price;
+  final String? description;
+  final String? category;
+  final String? image;
+  final Rating? rating;
   bool isFavorite;
-  String? title;
-  double? price;
-  String? description;
-  String? category;
-  String? image;
-  Rating? rating;
   int count;
 
   ProductModel({
@@ -34,7 +34,6 @@ class ProductModel extends BaseModel {
 
   @override
   Map<String, dynamic> toJson() {
-    // TODO: implement toJson
     throw UnimplementedError();
   }
 }

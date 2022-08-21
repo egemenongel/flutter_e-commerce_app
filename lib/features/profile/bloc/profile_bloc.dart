@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/features/profile/model/profile_model.dart';
 import 'package:ecommerce_app/features/profile/service/profile_service.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

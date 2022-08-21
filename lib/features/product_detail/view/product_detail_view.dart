@@ -1,4 +1,6 @@
+import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
+import 'package:ecommerce_app/core/constants/network_paths.dart';
 import 'package:ecommerce_app/product/components/buttons/favorite_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_dropdown_button.dart';
 import 'package:ecommerce_app/core/components/buttons/primary_elevated_button.dart';
@@ -12,6 +14,7 @@ import 'package:ecommerce_app/product/components/product_rating_bar.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class ProductDetailView extends StatelessWidget {
   const ProductDetailView({Key? key, required this.product}) : super(key: key);
@@ -142,7 +145,16 @@ class ProductDetailView extends StatelessWidget {
         child: PrimaryElevatedButton(
           onPressed: () {
             context.read<BagBloc>().add(BagProductAdded(product));
-            PrimarySnackbar.show(context, LocaleKeys.common_messages_bag_add);
+
+            PrimarySnackbar.show(
+                context,
+                CustomMessage(
+                  translationKey: LocaleKeys.common_messages_bag_add,
+                  icon: Lottie.network(
+                    NetworkPaths.addAnimation,
+                    repeat: false,
+                  ),
+                ));
           },
           localizationKey: LocaleKeys.common_buttons_add_to_cart,
         ),

@@ -1,11 +1,19 @@
-import 'package:easy_localization/easy_localization.dart';
-import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
+import 'package:ecommerce_app/core/components/custom_message.dart';
+import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class PrimarySnackbar {
-  static show(BuildContext context, String translationKey) =>
+  final Widget? icon;
+  const PrimarySnackbar({this.icon});
+  static show(
+    BuildContext context,
+    CustomMessage customMessage,
+  ) =>
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(
-            SnackBar(content: Text(translationKey.tr().toCapitalized())));
+        ..showSnackBar(SnackBar(
+            backgroundColor: context.colors.primary,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(50))),
+            content: customMessage));
 }

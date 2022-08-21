@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/base/view/base_view.dart';
-import 'package:ecommerce_app/core/constants/asset_paths.dart';
+import 'package:ecommerce_app/core/constants/network_paths.dart';
 import 'package:ecommerce_app/features/splash/cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,9 +19,7 @@ class SplashView extends StatelessWidget {
               onTap: () =>
                   Navigator.of(context).pushReplacementNamed(BaseView.id),
               child: Center(
-                child: Lottie.asset(
-                  AssetPaths.anim1,
-                ),
+                child: Lottie.network(NetworkPaths.splashAnimation),
               ),
             ),
           );

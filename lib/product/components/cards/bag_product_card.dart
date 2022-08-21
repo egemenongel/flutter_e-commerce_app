@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
 import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
+import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
@@ -23,7 +24,11 @@ class BagProductCard extends StatelessWidget {
         ),
         onLongPress: () {
           context.read<BagBloc>().add(BagProductRemoved(product));
-          PrimarySnackbar.show(context, LocaleKeys.common_messages_bag_remove);
+          PrimarySnackbar.show(
+              context,
+              const CustomMessage(
+                translationKey: LocaleKeys.common_messages_bag_remove,
+              ));
         });
   }
 

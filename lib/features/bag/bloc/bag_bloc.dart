@@ -59,7 +59,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     final state = this.state;
     if (state is BagLoad) {
       try {
-        incrementProduct(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -68,6 +67,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             isProductUpdated: false,
           ),
         );
+        incrementProduct(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -88,7 +88,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     final state = this.state;
     if (state is BagLoad) {
       try {
-        decrementProduct(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -97,6 +96,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             isProductUpdated: false,
           ),
         );
+        decrementProduct(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -117,7 +117,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     final state = this.state;
     if (state is BagLoad) {
       try {
-        addItemToCart(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -126,6 +125,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
             isProductUpdated: false,
           ),
         );
+        addItemToCart(event.product);
         emit(
           BagLoad(
             bag: BagModel(
@@ -146,6 +146,13 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     if (state is BagLoad) {
       try {
         removeItemFromBag(event.product);
+        if (_items.isEmpty) {
+          emit(
+            const BagLoad(
+              totalPrice: 0,
+            ),
+          );
+        }
         emit(
           BagLoad(
             bag: BagModel(

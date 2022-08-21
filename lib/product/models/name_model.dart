@@ -16,7 +16,6 @@ class Name extends BaseModel {
 
   @override
   Map<String, dynamic> toJson() {
-    // TODO: implement toJson
     throw UnimplementedError();
   }
 }

@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/features/favorites/model/favorites_model.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'favorites_event.dart';
 part 'favorites_state.dart';
