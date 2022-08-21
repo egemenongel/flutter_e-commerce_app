@@ -12,6 +12,8 @@ class PrimarySnackbar {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(
+            duration: const Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
             backgroundColor: context.colors.primary,
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(50))),

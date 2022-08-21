@@ -17,6 +17,9 @@ class CustomMessage extends StatelessWidget {
         child: Row(
           children: [
             icon ?? const SizedBox(),
+            const SizedBox(
+              width: 10,
+            ),
             Text(
               translationKey.tr(),
               style: context.textTheme.bodyText1!.copyWith(),

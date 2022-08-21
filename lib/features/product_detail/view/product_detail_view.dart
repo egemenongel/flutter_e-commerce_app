@@ -149,12 +149,9 @@ class ProductDetailView extends StatelessWidget {
             PrimarySnackbar.show(
                 context,
                 CustomMessage(
-                  translationKey: LocaleKeys.common_messages_bag_add,
-                  icon: Lottie.network(
-                    NetworkPaths.addAnimation,
-                    repeat: false,
-                  ),
-                ));
+                    translationKey: LocaleKeys.common_messages_bag_add,
+                    icon: Lottie.network(NetworkPaths.addAnimation,
+                        repeat: false)));
           },
           localizationKey: LocaleKeys.common_buttons_add_to_cart,
         ),

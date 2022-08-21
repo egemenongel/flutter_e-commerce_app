@@ -5,4 +5,6 @@ class NetworkPaths {
       'https://assets6.lottiefiles.com/datafiles/Wv6eeBslW1APprw/data.json';
   static const removeAnimation =
       'https://assets5.lottiefiles.com/private_files/lf30_ltbsyn9h.json';
+  static const favoriteAnimation =
+      'https://assets10.lottiefiles.com/packages/lf20_blfuo1tm.json';
 }

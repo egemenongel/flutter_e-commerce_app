@@ -1,11 +1,13 @@
 import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
+import 'package:ecommerce_app/core/constants/network_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/favorites/bloc/favorites_bloc.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class FavoriteButton extends StatelessWidget {
   const FavoriteButton({
@@ -25,8 +27,10 @@ class FavoriteButton extends StatelessWidget {
               .add(FavoritesProductAdded(productModel));
           PrimarySnackbar.show(
             context,
-            const CustomMessage(
-                translationKey: LocaleKeys.common_messages_favorite_add),
+            CustomMessage(
+                translationKey: LocaleKeys.common_messages_favorite_add,
+                icon: Lottie.network(NetworkPaths.favoriteAnimation,
+                    repeat: false)),
           );
         } else {
           context
@@ -34,8 +38,10 @@ class FavoriteButton extends StatelessWidget {
               .add(FavoritesProductRemoved(productModel));
           PrimarySnackbar.show(
               context,
-              const CustomMessage(
-                  translationKey: LocaleKeys.common_messages_favorite_remove));
+              CustomMessage(
+                  translationKey: LocaleKeys.common_messages_favorite_remove,
+                  icon: Lottie.network(NetworkPaths.removeAnimation,
+                      repeat: false)));
         }
       },
       style: ElevatedButton.styleFrom(

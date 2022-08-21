@@ -2,12 +2,14 @@ import 'package:ecommerce_app/core/components/cards/primary_list_tile.dart';
 import 'package:ecommerce_app/core/components/cards/tile_image_card.dart';
 import 'package:ecommerce_app/core/components/custom_message.dart';
 import 'package:ecommerce_app/core/components/primary_snackbar.dart';
+import 'package:ecommerce_app/core/constants/network_paths.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:ecommerce_app/core/utils/lang/generated/locale_keys.g.dart';
 import 'package:ecommerce_app/features/bag/bloc/bag_bloc.dart';
 import 'package:ecommerce_app/product/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class BagProductCard extends StatelessWidget {
   const BagProductCard({Key? key, required this.product}) : super(key: key);
@@ -26,8 +28,9 @@ class BagProductCard extends StatelessWidget {
           context.read<BagBloc>().add(BagProductRemoved(product));
           PrimarySnackbar.show(
               context,
-              const CustomMessage(
+              CustomMessage(
                 translationKey: LocaleKeys.common_messages_bag_remove,
+                icon: Lottie.network(NetworkPaths.removeAnimation),
               ));
         });
   }
