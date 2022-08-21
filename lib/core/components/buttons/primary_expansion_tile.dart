@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerce_app/core/constants/lorem_ipsum.dart';
 import 'package:ecommerce_app/core/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/core/extensions/string_case_extension.dart';
@@ -28,7 +29,9 @@ class PrimaryExpansionTile extends StatelessWidget {
       children: widgets ??
           [
             const SizedBox(
-              height: 100,
+              child: Text(
+                LoremIpsum.loremIpsum1,
+              ),
             )
           ],
     );

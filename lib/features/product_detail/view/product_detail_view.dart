@@ -73,9 +73,10 @@ class ProductDetailView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const PrimaryDropdownButton(
-            items: ['Small', 'Medium', 'Large'],
-          ),
+          const SizedBox(),
+          // const PrimaryDropdownButton(
+          //   items: ['Small', 'Medium', 'Large'],
+          // ),
           FavoriteButton(
             iconColor: context.colors.onPrimary,
             productModel: product,
