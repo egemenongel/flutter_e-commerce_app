@@ -5,6 +5,7 @@
   * [Table of Contents](#table-of-contents)
   * [Description](#description)
   * [Screenshots](#screenshots)
+  * [Installation](#installation)
   * [Design](#design)
   * [License](#license)
 
@@ -27,6 +28,13 @@ https://user-images.githubusercontent.com/73590188/185792214-f04870fa-daaa-488d-
 | Bag Screen | Favorites Screen | Profile Screen  |
 |:-------------:|:-------------:| :-------------:|
 | <img src="https://user-images.githubusercontent.com/73590188/184550660-7eca12d3-4fc5-4a8f-ac58-1d73d9b7611a.png">     | <img src="https://user-images.githubusercontent.com/73590188/184550659-7f768fe7-9787-4b1c-bae1-8fb2eba7470a.png">  | <img src="https://user-images.githubusercontent.com/73590188/184550661-86105e81-df2a-4cc8-b73e-666f41399d19.png"> |
+
+## Installation
+ - Install [Flutter](https://docs.flutter.dev/get-started/install)
+ - Clone this repo
+```
+flutter run --release
+```
 
 ## Design 
 
