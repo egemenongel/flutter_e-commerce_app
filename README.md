@@ -43,3 +43,4 @@ Designed by [Hitesh Tapaniya](https://www.figma.com/@hiteshbenzatine). [E-Commer
 ## License
 
 This project is licensed under the MIT license. See [LICENSE](https://github.com/egemenongel/flutter_e-commerce_app/blob/master/LICENSE) for more information.
+=
