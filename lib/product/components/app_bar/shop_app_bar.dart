@@ -139,7 +139,7 @@ class ShopAppBarState extends State<ShopAppBar> {
   }
 
   Expanded _buildSortTypes(List<String> actionsList, BuildContext context) {
-    final int selectedIndex = context.read<ShopCubit>().selectedIndex;
+    final int selectedIndex = context.read<ShopCubit>().index;
     return Expanded(
       child: GestureDetector(
         child: Column(
@@ -156,8 +156,9 @@ class ShopAppBarState extends State<ShopAppBar> {
                                 .read<ShopCubit>()
                                 .selectIndex(actionsList.indexOf(action));
                             await context.read<ShopCubit>().fetchAllProducts(
-                                  params:
-                                      context.read<ShopCubit>().queryParameters,
+                                  params: context
+                                      .read<ShopCubit>()
+                                      .parameters,
                                 );
                           },
                           child: Row(

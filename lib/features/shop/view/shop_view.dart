@@ -26,7 +26,7 @@ class ShopView extends StatelessWidget {
               color: context.colors.onPrimary,
               onRefresh: () async {
                 await context.read<ShopCubit>().fetchAllProducts(
-                      params: context.read<ShopCubit>().queryParameters,
+                      params: context.read<ShopCubit>().parameters,
                     );
               },
               child: state.isGrid
