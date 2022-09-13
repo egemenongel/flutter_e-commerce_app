@@ -18,9 +18,9 @@
         },
         "messages":{
             "favorite_add":"Favorilere eklendi.",
-            "favorite_remove":"Favorilerden cikarildi.",
-            "bag_add":"Cantaya eklendi.",
-            "bag_remove":"Cantadan cikarildi."
+            "favorite_remove":"Favorilerden çıkarıldı.",
+            "bag_add":"Çantaya eklendi.",
+            "bag_remove":"Çantadan çıkarıldı."
         }
     },
     "home":{
@@ -31,7 +31,7 @@
     },
     "shop":{
         "title":"Ürünler",
-        "sort":"Suna göre sırala",
+        "sort":"Şuna göre sırala",
         "sort_types":{
             "popular":"popüler",
             "newest":"en yeni",
@@ -46,7 +46,7 @@
         "total":"toplam tutar",
         "codes":"promosyon kodların",
         "apply":"uygula",
-        "empty":"cantan bos :("
+        "empty":"çantan boş :("
     },
     "favorites":{
         "title":"favoriler",
@@ -68,7 +68,7 @@
         "support":"destek"
     },
     "success":{
-        "title":"basarili!",
-        "thanks":"Siparişiniz yakinda teslim edilecek.\nBizim uygulamamizi sectiginiz icin tesekkurler!"
+        "title":"başarılı!",
+        "thanks":"Siparişiniz yakında teslim edilecek.\nBizim uygulamamızı seçtiğiniz için teşekkürler!"
     }
 } 
